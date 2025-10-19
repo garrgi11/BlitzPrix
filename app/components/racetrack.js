@@ -154,14 +154,23 @@ const F1RaceSimulation = () => {
         new THREE.Vector3(-65, 0, -30),
         new THREE.Vector3(-60, 0, -10),
         
-        // TURN 1 - Dramatic uphill left-hander (bottom center)
-        new THREE.Vector3(-55, 0, 10),
-        new THREE.Vector3(-45, 0, 25),
-        new THREE.Vector3(-30, 0, 35),
-        new THREE.Vector3(-15, 0, 40),
+        // TURN 1 - Wide sweeping left-hander (MUCH WIDER RADIUS like other smooth curves)
+        new THREE.Vector3(-58, 0, 0),
+        new THREE.Vector3(-55, 0, 8),
+        new THREE.Vector3(-52, 0, 15),
+        new THREE.Vector3(-48, 0, 21),
+        new THREE.Vector3(-44, 0, 26),
+        new THREE.Vector3(-39, 0, 30),
+        new THREE.Vector3(-34, 0, 33),
+        new THREE.Vector3(-28, 0, 35),
+        new THREE.Vector3(-22, 0, 37),
+        new THREE.Vector3(-16, 0, 38),
+        new THREE.Vector3(-10, 0, 39),
+        new THREE.Vector3(-5, 0, 40),
         
         // TURN 2 - Apex of the big left (SECTOR 1 - RED)
-        new THREE.Vector3(0, 0, 42),
+        new THREE.Vector3(0, 0, 41),
+        new THREE.Vector3(5, 0, 42),
         
         // TURNS 3-6 - The Esses going up the left side
         new THREE.Vector3(10, 0, 45),         // Turn 3 - right
@@ -199,22 +208,34 @@ const F1RaceSimulation = () => {
         new THREE.Vector3(55, 0, 48),         // Turn 16 - left
         new THREE.Vector3(45, 0, 42),         // Turn 17 - left hairpin
         new THREE.Vector3(38, 0, 30),         // Turn 18 - right
-        new THREE.Vector3(35, 0, 15),
+        new THREE.Vector3(36, 0, 22),
+        new THREE.Vector3(34, 0, 14),
+        new THREE.Vector3(32, 0, 7),
         
-        // TURN 19 - Left hander (bottom middle)
+        // TURN 19 - Left hander (bottom middle) - SMOOTHED
         new THREE.Vector3(30, 0, 0),
-        new THREE.Vector3(20, 0, -15),
+        new THREE.Vector3(26, 0, -6),
+        new THREE.Vector3(22, 0, -12),
+        new THREE.Vector3(18, 0, -18),
+        new THREE.Vector3(14, 0, -23),
         
-        // TURN 20 - Final right hander before start/finish
-        new THREE.Vector3(5, 0, -30),
-        new THREE.Vector3(-10, 0, -45),
-        new THREE.Vector3(-30, 0, -60),
-        new THREE.Vector3(-50, 0, -75),
-        new THREE.Vector3(-65, 0, -85),       // Back to start
+        // TURN 20 - Final right hander before start/finish (EXTRA SMOOTHED)
+        new THREE.Vector3(10, 0, -28),
+        new THREE.Vector3(5, 0, -33),
+        new THREE.Vector3(0, 0, -38),
+        new THREE.Vector3(-6, 0, -44),
+        new THREE.Vector3(-13, 0, -50),
+        new THREE.Vector3(-21, 0, -56),
+        new THREE.Vector3(-30, 0, -62),
+        new THREE.Vector3(-40, 0, -68),
+        new THREE.Vector3(-50, 0, -74),
+        new THREE.Vector3(-60, 0, -80),
+        new THREE.Vector3(-68, 0, -86),       // Back to start
       ];
 
-      // Create smooth curve from points
+      // Create smooth curve from points with arc-length parametrization
       const trackCurve = new THREE.CatmullRomCurve3(trackPoints, true); // true = closed loop
+      trackCurve.arcLengthDivisions = 500; // Higher divisions for accurate arc-length
       
       // Create flat track surface (ribbon-style)
       const trackWidth = 12;
@@ -225,11 +246,11 @@ const F1RaceSimulation = () => {
       const indices = [];
       const uvs = [];
       
-      // Generate vertices along the curve
+      // Generate vertices along the curve using arc-length parametrization
       for (let i = 0; i <= segments; i++) {
         const t = i / segments;
-        const point = trackCurve.getPoint(t);
-        const tangent = trackCurve.getTangent(t);
+        const point = trackCurve.getPointAt(t); // Arc-length based for uniform spacing
+        const tangent = trackCurve.getTangentAt(t); // Arc-length based tangent
         
         // Calculate perpendicular vector for track width
         const perpendicular = new THREE.Vector3(-tangent.z, 0, tangent.x).normalize();
@@ -287,8 +308,8 @@ const F1RaceSimulation = () => {
         
         for (let i = 0; i <= curbSegments; i++) {
           const t = i / curbSegments;
-          const point = trackCurve.getPoint(t);
-          const tangent = trackCurve.getTangent(t);
+          const point = trackCurve.getPointAt(t); // Arc-length based
+          const tangent = trackCurve.getTangentAt(t); // Arc-length based
           const perpendicular = new THREE.Vector3(-tangent.z, 0, tangent.x).normalize();
           
           // Determine stripe color (alternating red/white based on distance along track)
@@ -439,13 +460,13 @@ const F1RaceSimulation = () => {
       // Place ONE test grandstand - properly oriented
       
       // Single grandstand at Start/Finish for testing
-      const testGrandstand = createGrandstand(
-        new THREE.Vector3(-120, 0, -40),
-        0, // No rotation - facing +Z direction
-        8,
-        35
-      );
-      trackGroup.add(testGrandstand);
+      // const testGrandstand = createGrandstand(
+      //   new THREE.Vector3(-120, 0, -40),
+      //   0, // No rotation - facing +Z direction
+      //   8,
+      //   35
+      // );
+      // trackGroup.add(testGrandstand);
       
       // Store track curve for car path
       trackGroup.userData.trackCurve = trackCurve;
@@ -457,6 +478,65 @@ const F1RaceSimulation = () => {
     const racetrack = createRacetrack();
     const trackCurve = racetrack.userData.trackCurve;
     scene.add(racetrack);
+
+    // Add checkered start/finish line on a straight section
+    const startFinishPosition = 0.84; // Position on the straight before final corner
+    
+    const createCheckeredLine = () => {
+      // Create checkered pattern texture
+      const canvas = document.createElement('canvas');
+      canvas.width = 512;
+      canvas.height = 256;
+      const ctx = canvas.getContext('2d');
+      
+      const squareSize = 64; // Size of each checker square
+      const numSquaresX = 8;
+      const numSquaresY = 4;
+      
+      for (let i = 0; i < numSquaresX; i++) {
+        for (let j = 0; j < numSquaresY; j++) {
+          // Alternate between black and white
+          ctx.fillStyle = (i + j) % 2 === 0 ? '#ffffff' : '#000000';
+          ctx.fillRect(i * squareSize, j * squareSize, squareSize, squareSize);
+        }
+      }
+      
+      const checkeredTexture = new THREE.CanvasTexture(canvas);
+      checkeredTexture.anisotropy = 16;
+      checkeredTexture.wrapS = THREE.ClampToEdgeWrapping;
+      checkeredTexture.wrapT = THREE.ClampToEdgeWrapping;
+      
+      // Get position on the main straight using arc-length
+      const startPoint = trackCurve.getPointAt(startFinishPosition);
+      const nextPoint = trackCurve.getPointAt((startFinishPosition + 0.002) % 1);
+      
+      // Calculate direction angle perpendicular to track
+      const dx = nextPoint.x - startPoint.x;
+      const dz = nextPoint.z - startPoint.z;
+      const angle = Math.atan2(dz, dx); // Perpendicular angle for crossing the track
+      
+      // Use actual track width from racetrack
+      const trackWidth = racetrack.userData.trackWidth || 12;
+      
+      // Create checkered finish line - matches road width exactly
+      const lineGeometry = new THREE.PlaneGeometry(trackWidth, 2.5);
+      const lineMaterial = new THREE.MeshStandardMaterial({ 
+        map: checkeredTexture,
+        roughness: 0.8,
+        metalness: 0.1
+      });
+      
+      const checkeredLine = new THREE.Mesh(lineGeometry, lineMaterial);
+      checkeredLine.rotation.x = -Math.PI / 2; // Lay flat
+      checkeredLine.rotation.z = angle; // Perpendicular to track direction
+      checkeredLine.position.set(startPoint.x, 0.22, startPoint.z); // On the straight, slightly above track
+      checkeredLine.receiveShadow = true;
+      
+      return checkeredLine;
+    };
+    
+    const checkeredStartLine = createCheckeredLine();
+    scene.add(checkeredStartLine);
 
     // Add "COTA" and "CIRCUIT OF THE AMERICAS" text as flat decals on ground
     
@@ -702,9 +782,9 @@ const F1RaceSimulation = () => {
     // Load the realistic Ferrari F1 models - 3 cars with different colors
     let cars = []; // Array to store all 3 cars
     const carColors = [
-      { name: 'Black', color: 0x1a1a1a, startPosition: 0.0 },      // Original car
-      { name: 'Red', color: 0xff0000, startPosition: 0.04 },        // Red car closer ahead
-      { name: 'Blue', color: 0x00aaff, startPosition: 0.08 }        // Blue car just ahead of red
+      { name: 'Black', color: 0x1a1a1a, startPosition: startFinishPosition },      // Original car at start line
+      { name: 'Red', color: 0xff0000, startPosition: startFinishPosition + 0.06 },        // Red car ahead with more space
+      { name: 'Blue', color: 0x00aaff, startPosition: startFinishPosition + 0.12 }        // Blue car just ahead of red
     ];
     
     const loader = new GLTFLoader();
@@ -1650,7 +1730,7 @@ const F1RaceSimulation = () => {
 }
 
     // Track path parameters
-    const speed = 1.5; // Speed around track
+    const speed = 3.5; // Speed around track (increased for faster racing)
     let wheelRotation = 0;
 
     // Animation loop
@@ -1660,18 +1740,32 @@ const F1RaceSimulation = () => {
       // Animate all cars
       if (cars.length > 0 && trackCurve) {
         cars.forEach((car) => {
-          // Move car along COTA track curve
-          car.trackProgress += speed * 0.0005; // Same speed for all
-          if (car.trackProgress > 1) car.trackProgress = 0; // Loop back
+          // Calculate track curvature for realistic speed adjustment
+          const tangent1 = trackCurve.getTangentAt(car.trackProgress);
+          const tangent2 = trackCurve.getTangentAt((car.trackProgress + 0.003) % 1);
+          const curvature = tangent1.angleTo(tangent2);
           
-          // Get position on curve
-          const carPosition = trackCurve.getPoint(car.trackProgress);
+          // Realistic F1 curve slowdown - subtle but noticeable
+          let speedMultiplier = 1.0;
+          if (curvature > 0.015) {
+            // Slow down 10-25% on curves depending on sharpness
+            speedMultiplier = Math.max(0.75, 1.0 - curvature * 4);
+          }
+          
+          // Move car along COTA track curve with curve-adjusted speed
+          car.trackProgress += speed * 0.0005 * speedMultiplier;
+          
+          // Simple modulo to loop - CatmullRomCurve handles this smoothly
+          car.trackProgress = car.trackProgress % 1;
+          
+          // Get position on curve using arc-length parametrization for UNIFORM speed
+          const carPosition = trackCurve.getPointAt(car.trackProgress); // getPointAt = arc-length based
           car.model.position.copy(carPosition);
           car.model.position.y = 0.8; // Raise car above track
           
           // Calculate direction by looking ahead on the curve
-          const nextProgress = (car.trackProgress + 0.01) % 1;
-          const nextPosition = trackCurve.getPoint(nextProgress);
+          const nextProgress = (car.trackProgress + 0.005) % 1; // Smaller lookahead for smoother rotation
+          const nextPosition = trackCurve.getPointAt(nextProgress); // getPointAt = arc-length based
           
           // Calculate the angle between current and next position
           const dx = nextPosition.x - carPosition.x;
@@ -1689,15 +1783,15 @@ const F1RaceSimulation = () => {
           });
         });
         
-        // Rotate wheels (shared rotation value)
-        wheelRotation += speed * 0.03;
+        // Rotate wheels (shared rotation value) - adjusted for speed
+        wheelRotation += speed * 0.04;
         
-        // Camera follows the first car (black car)
+        // Camera follows the first car (black car) with smooth interpolation
         if (cars[0]) {
           const leadCar = cars[0];
-          const carPosition = trackCurve.getPoint(leadCar.trackProgress);
-          const nextProgress = (leadCar.trackProgress + 0.01) % 1;
-          const nextPosition = trackCurve.getPoint(nextProgress);
+          const carPosition = trackCurve.getPointAt(leadCar.trackProgress); // Arc-length based
+          const nextProgress = (leadCar.trackProgress + 0.005) % 1;
+          const nextPosition = trackCurve.getPointAt(nextProgress); // Arc-length based
           const dx = nextPosition.x - carPosition.x;
           const dz = nextPosition.z - carPosition.z;
           const directionAngle = Math.atan2(dx, dz) + Math.PI / 2;
@@ -1708,13 +1802,19 @@ const F1RaceSimulation = () => {
           
           // Calculate camera position behind the car
           const cameraAngle = directionAngle - Math.PI / 2;
-          const camX = carPosition.x - Math.sin(cameraAngle) * cameraOffset;
-          const camZ = carPosition.z - Math.cos(cameraAngle) * cameraOffset;
+          const targetCamX = carPosition.x - Math.sin(cameraAngle) * cameraOffset;
+          const targetCamZ = carPosition.z - Math.cos(cameraAngle) * cameraOffset;
           
-          camera.position.x = camX;
+          // Smooth camera movement with lerp (prevents jerky motion)
+          const lerpFactor = 0.15; // Smooth following (increased for faster cars)
+          camera.position.x += (targetCamX - camera.position.x) * lerpFactor;
       camera.position.y = cameraHeight;
-          camera.position.z = camZ;
-          camera.lookAt(carPosition.x, 0.8, carPosition.z);
+          camera.position.z += (targetCamZ - camera.position.z) * lerpFactor;
+          
+          // Smooth lookAt target
+          const targetLookX = carPosition.x;
+          const targetLookZ = carPosition.z;
+          camera.lookAt(targetLookX, 0.8, targetLookZ);
         }
       }
       
