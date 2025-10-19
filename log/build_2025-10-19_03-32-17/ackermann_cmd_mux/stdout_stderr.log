@@ -1,0 +1,48 @@
+-- The C compiler identification is GNU 9.4.0
+-- The CXX compiler identification is GNU 9.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Using CATKIN_DEVEL_PREFIX: /home/Platooning-F1Tenth/build/ackermann_cmd_mux/devel
+-- Using CMAKE_PREFIX_PATH: /opt/ros/noetic
+-- This workspace overlays: /opt/ros/noetic
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using Debian Python package layout
+-- Found PY_em: /usr/lib/python3/dist-packages/em.py  
+-- Using empy: /usr/lib/python3/dist-packages/em.py
+-- Using CATKIN_ENABLE_TESTING: ON
+-- Call enable_testing()
+-- Using CATKIN_TEST_RESULTS_DIR: /home/Platooning-F1Tenth/build/ackermann_cmd_mux/test_results
+-- Forcing gtest/gmock from source, though one was otherwise available.
+-- Found gtest sources under '/usr/src/googletest': gtests will be built
+-- Found gmock sources under '/usr/src/googletest': gmock will be built
+-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+-- Found Threads: TRUE  
+-- Using Python nosetests: /usr/bin/nosetests3
+-- catkin 0.8.12
+-- BUILD_SHARED_LIBS is on
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") 
+-- Checking for one of the modules 'yaml-cpp'
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/Platooning-F1Tenth/build/ackermann_cmd_mux
+[35m[1mScanning dependencies of target ackermann_cmd_mux_gencfg[0m
+[ 25%] [34m[1mGenerating dynamic reconfigure files from cfg/reload.cfg: /home/Platooning-F1Tenth/build/ackermann_cmd_mux/devel/include/ackermann_cmd_mux/reloadConfig.h /home/Platooning-F1Tenth/build/ackermann_cmd_mux/devel/lib/python3/dist-packages/ackermann_cmd_mux/cfg/reloadConfig.py[0m
+Generating reconfiguration files for reload in ackermann_cmd_mux
+Wrote header file in /home/Platooning-F1Tenth/build/ackermann_cmd_mux/devel/include/ackermann_cmd_mux/reloadConfig.h
+[ 25%] Built target ackermann_cmd_mux_gencfg
+[35m[1mScanning dependencies of target ackermann_cmd_mux_nodelet[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/ackermann_cmd_mux_nodelet.dir/src/ackermann_cmd_subscribers.cpp.o[0m
+[ 75%] [32mBuilding CXX object CMakeFiles/ackermann_cmd_mux_nodelet.dir/src/ackermann_cmd_mux_nodelet.cpp.o[0m
+[100%] [32m[1mLinking CXX shared library devel/lib/libackermann_cmd_mux_nodelet.so[0m
+[100%] Built target ackermann_cmd_mux_nodelet

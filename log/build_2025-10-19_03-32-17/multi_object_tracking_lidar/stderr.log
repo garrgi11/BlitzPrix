@@ -1,0 +1,4 @@
+[01m[K/home/Platooning-F1Tenth/src/multiple-object-tracking-lidar/src/main.cpp:[m[K In function ‘[01m[Kvoid cloud_cb(const PointCloud2ConstPtr&)[m[K’:
+[01m[K/home/Platooning-F1Tenth/src/multiple-object-tracking-lidar/src/main.cpp:647:23:[m[K [01;35m[Kwarning: [m[Kstatement will never be executed [[01;35m[K-Wswitch-unreachable[m[K]
+  647 |                 cout<<[01;35m[K"Inside the switch case\n"[m[K;
+      |                       [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K

@@ -1,0 +1,8 @@
+Invoking command in '/home/Platooning-F1Tenth/build/racecar_control': /usr/bin/cmake /home/Platooning-F1Tenth/src/simulator/racecar-simulator/racecar_control -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/racecar_control
+Invoked command in '/home/Platooning-F1Tenth/build/racecar_control' returned '0': /usr/bin/cmake /home/Platooning-F1Tenth/src/simulator/racecar-simulator/racecar_control -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/racecar_control
+Invoking command in '/home/Platooning-F1Tenth/build/racecar_control': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/racecar_control -- -j10 -l10
+Invoked command in '/home/Platooning-F1Tenth/build/racecar_control' returned '0': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/racecar_control -- -j10 -l10
+Invoking command in '/home/Platooning-F1Tenth/build/racecar_control': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/racecar_control --target tests -- -j10 -l10
+Invoked command in '/home/Platooning-F1Tenth/build/racecar_control' returned '0': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/racecar_control --target tests -- -j10 -l10
+Invoking command in '/home/Platooning-F1Tenth/build/racecar_control': /usr/bin/cmake --install /home/Platooning-F1Tenth/build/racecar_control
+Invoked command in '/home/Platooning-F1Tenth/build/racecar_control' returned '0': /usr/bin/cmake --install /home/Platooning-F1Tenth/build/racecar_control

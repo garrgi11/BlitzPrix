@@ -1,0 +1,35 @@
+#Don't track content of these folders
+__pycache__
+build/
+install/
+log/
+devel/
+datasets/
+
+# prevent large files from being tracked unneccessarily
+
+*.png
+*.jpg
+*.bag
+*.npy
+*.vscode/
+
+#ignore jupyter checkpoints
+*.ipynb_checkpoints/
+
+#ignore .pyc files
+*.pyc
+
+#ignore model files, I'll force add the ones I want to include
+*.hdf5
+
+#ignore all zip files
+*.zip
+
+#ignore catkin_workspace
+.catkin_workspace
+
+#Ignore Specific files
+VGG16transfer.hdf5
+
+

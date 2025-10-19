@@ -1,0 +1,4 @@
+Invoking command in '/home/Platooning-F1Tenth/build/map_server2': /usr/bin/cmake /home/Platooning-F1Tenth/src/map_server -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/map_server2
+Invoked command in '/home/Platooning-F1Tenth/build/map_server2' returned '0': /usr/bin/cmake /home/Platooning-F1Tenth/src/map_server -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/map_server2
+Invoking command in '/home/Platooning-F1Tenth/build/map_server2': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/map_server2 -- -j10 -l10
+Invoked command in '/home/Platooning-F1Tenth/build/map_server2' returned '2': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/map_server2 -- -j10 -l10

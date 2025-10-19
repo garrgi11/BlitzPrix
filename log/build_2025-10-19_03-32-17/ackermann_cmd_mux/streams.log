@@ -1,0 +1,51 @@
+[0.121s] Invoking command in '/home/Platooning-F1Tenth/build/ackermann_cmd_mux': /usr/bin/cmake /home/Platooning-F1Tenth/src/ackermann_cmd_mux -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/ackermann_cmd_mux
+[1.087s] -- The C compiler identification is GNU 9.4.0
+[1.593s] -- The CXX compiler identification is GNU 9.4.0
+[1.607s] -- Check for working C compiler: /usr/bin/cc
+[2.473s] -- Check for working C compiler: /usr/bin/cc -- works
+[2.475s] -- Detecting C compiler ABI info
+[3.225s] -- Detecting C compiler ABI info - done
+[3.250s] -- Detecting C compile features
+[3.251s] -- Detecting C compile features - done
+[3.263s] -- Check for working CXX compiler: /usr/bin/c++
+[3.950s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[3.952s] -- Detecting CXX compiler ABI info
+[4.753s] -- Detecting CXX compiler ABI info - done
+[4.787s] -- Detecting CXX compile features
+[4.795s] -- Detecting CXX compile features - done
+[4.822s] -- Using CATKIN_DEVEL_PREFIX: /home/Platooning-F1Tenth/build/ackermann_cmd_mux/devel
+[4.827s] -- Using CMAKE_PREFIX_PATH: /opt/ros/noetic
+[4.832s] -- This workspace overlays: /opt/ros/noetic
+[4.951s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[4.955s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[4.956s] -- Using Debian Python package layout
+[5.110s] -- Found PY_em: /usr/lib/python3/dist-packages/em.py  
+[5.111s] -- Using empy: /usr/lib/python3/dist-packages/em.py
+[5.700s] -- Using CATKIN_ENABLE_TESTING: ON
+[5.703s] -- Call enable_testing()
+[5.720s] -- Using CATKIN_TEST_RESULTS_DIR: /home/Platooning-F1Tenth/build/ackermann_cmd_mux/test_results
+[9.166s] -- Forcing gtest/gmock from source, though one was otherwise available.
+[9.178s] -- Found gtest sources under '/usr/src/googletest': gtests will be built
+[9.186s] -- Found gmock sources under '/usr/src/googletest': gmock will be built
+[9.395s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[9.398s] -- Found Threads: TRUE  
+[9.406s] -- Using Python nosetests: /usr/bin/nosetests3
+[9.589s] -- catkin 0.8.12
+[9.589s] -- BUILD_SHARED_LIBS is on
+[11.852s] -- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") 
+[11.857s] -- Checking for one of the modules 'yaml-cpp'
+[13.702s] -- Configuring done
+[14.213s] -- Generating done
+[14.527s] -- Build files have been written to: /home/Platooning-F1Tenth/build/ackermann_cmd_mux
+[14.813s] Invoked command in '/home/Platooning-F1Tenth/build/ackermann_cmd_mux' returned '0': /usr/bin/cmake /home/Platooning-F1Tenth/src/ackermann_cmd_mux -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/ackermann_cmd_mux
+[14.818s] Invoking command in '/home/Platooning-F1Tenth/build/ackermann_cmd_mux': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/ackermann_cmd_mux -- -j10 -l10
+[15.235s] [35m[1mScanning dependencies of target ackermann_cmd_mux_gencfg[0m
+[15.411s] [ 25%] [34m[1mGenerating dynamic reconfigure files from cfg/reload.cfg: /home/Platooning-F1Tenth/build/ackermann_cmd_mux/devel/include/ackermann_cmd_mux/reloadConfig.h /home/Platooning-F1Tenth/build/ackermann_cmd_mux/devel/lib/python3/dist-packages/ackermann_cmd_mux/cfg/reloadConfig.py[0m
+[15.897s] Generating reconfiguration files for reload in ackermann_cmd_mux
+[15.902s] Wrote header file in /home/Platooning-F1Tenth/build/ackermann_cmd_mux/devel/include/ackermann_cmd_mux/reloadConfig.h
+[15.989s] [ 25%] Built target ackermann_cmd_mux_gencfg
+[16.052s] [35m[1mScanning dependencies of target ackermann_cmd_mux_nodelet[0m
+[16.961s] [ 50%] [32mBuilding CXX object CMakeFiles/ackermann_cmd_mux_nodelet.dir/src/ackermann_cmd_subscribers.cpp.o[0m
+[16.993s] [ 75%] [32mBuilding CXX object CMakeFiles/ackermann_cmd_mux_nodelet.dir/src/ackermann_cmd_mux_nodelet.cpp.o[0m
+[34.868s] [100%] [32m[1mLinking CXX shared library devel/lib/libackermann_cmd_mux_nodelet.so[0m
+[36.236s] [100%] Built target ackermann_cmd_mux_nodelet

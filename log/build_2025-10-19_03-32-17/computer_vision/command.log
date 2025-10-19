@@ -1,0 +1,5 @@
+Invoking command in '/home/Platooning-F1Tenth/build/computer_vision': /usr/bin/cmake /home/Platooning-F1Tenth/src/computer_vision -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/computer_vision
+Invoked command in '/home/Platooning-F1Tenth/build/computer_vision' returned '0': /usr/bin/cmake /home/Platooning-F1Tenth/src/computer_vision -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/computer_vision
+Invoking command in '/home/Platooning-F1Tenth/build/computer_vision': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/computer_vision -- -j10 -l10
+Invoked command in '/home/Platooning-F1Tenth/build/computer_vision' returned '0': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/computer_vision -- -j10 -l10
+Invoking command in '/home/Platooning-F1Tenth/build/computer_vision': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/computer_vision --target tests -- -j10 -l10

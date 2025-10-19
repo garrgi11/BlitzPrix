@@ -1,0 +1,44 @@
+[1.095s] Invoking command in '/home/Platooning-F1Tenth/build/racecar_gazebo': /usr/bin/cmake /home/Platooning-F1Tenth/src/simulator/racecar-simulator/racecar_gazebo -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/racecar_gazebo
+[2.491s] -- The C compiler identification is GNU 9.4.0
+[3.254s] -- The CXX compiler identification is GNU 9.4.0
+[3.282s] -- Check for working C compiler: /usr/bin/cc
+[4.428s] -- Check for working C compiler: /usr/bin/cc -- works
+[4.433s] -- Detecting C compiler ABI info
+[5.872s] -- Detecting C compiler ABI info - done
+[5.940s] -- Detecting C compile features
+[5.943s] -- Detecting C compile features - done
+[5.959s] -- Check for working CXX compiler: /usr/bin/c++
+[8.275s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[8.278s] -- Detecting CXX compiler ABI info
+[10.950s] -- Detecting CXX compiler ABI info - done
+[11.057s] -- Detecting CXX compile features
+[11.072s] -- Detecting CXX compile features - done
+[11.128s] -- Using CATKIN_DEVEL_PREFIX: /home/Platooning-F1Tenth/build/racecar_gazebo/devel
+[11.136s] -- Using CMAKE_PREFIX_PATH: /opt/ros/noetic
+[11.141s] -- This workspace overlays: /opt/ros/noetic
+[11.525s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[11.534s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[11.554s] -- Using Debian Python package layout
+[12.296s] -- Found PY_em: /usr/lib/python3/dist-packages/em.py  
+[12.310s] -- Using empy: /usr/lib/python3/dist-packages/em.py
+[14.120s] -- Using CATKIN_ENABLE_TESTING: ON
+[14.131s] -- Call enable_testing()
+[14.174s] -- Using CATKIN_TEST_RESULTS_DIR: /home/Platooning-F1Tenth/build/racecar_gazebo/test_results
+[20.127s] -- Forcing gtest/gmock from source, though one was otherwise available.
+[20.132s] -- Found gtest sources under '/usr/src/googletest': gtests will be built
+[20.135s] -- Found gmock sources under '/usr/src/googletest': gmock will be built
+[20.315s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[20.318s] -- Found Threads: TRUE  
+[20.330s] -- Using Python nosetests: /usr/bin/nosetests3
+[20.517s] -- catkin 0.8.12
+[20.520s] -- BUILD_SHARED_LIBS is on
+[21.688s] WARNING: package 'gazebo_ros' is deprecated (This package has been deprecated as of January 2025 with Gazebo classic 11 reaching
+[21.689s]       end-of-life. Users are highly encouraged to migrate to the new Gazebo
+[21.690s]       using our migration guides (https://gazebosim.org/docs/latest/gazebo_classic_migration))
+[21.904s] -- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+[21.988s] WARNING: package 'gazebo_msgs' is deprecated (This package has been deprecated as of January 2025 with Gazebo classic 11 reaching
+[21.989s]       end-of-life. Users are highly encouraged to migrate to the new Gazebo
+[21.989s]       using our migration guides (https://gazebosim.org/docs/latest/gazebo_classic_migration))
+[23.166s] -- Configuring done
+[23.996s] -- Generating done
+[24.497s] -- Build files have been written to: /home/Platooning-F1Tenth/build/racecar_gazebo

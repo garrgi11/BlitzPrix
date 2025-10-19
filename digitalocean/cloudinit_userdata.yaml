@@ -1,0 +1,205 @@
+#cloud-config
+#
+# Cloud-Init configuration for DigitalOcean GPU/AI droplets
+# This script installs tools and runs demo workloads
+#
+
+# Update packages on first boot
+package_update: true
+package_upgrade: true
+
+# Install required packages
+packages:
+  - iperf3
+  - stress
+  - docker.io
+  - docker-compose
+  - python3
+  - python3-pip
+  - htop
+  - curl
+  - wget
+  - git
+  - jq
+
+# Create demo user and directories
+users:
+  - name: demo
+    groups: docker
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+
+# Write demo test script
+write_files:
+  - path: /home/demo/tests/run_tests.sh
+    permissions: '0755'
+    owner: demo:demo
+    content: |
+      #!/bin/bash
+      #
+      # Demo workload script - CPU stress test and network benchmark
+      #
+      
+      LOG_FILE="/home/demo/tests/demo.log"
+      mkdir -p "$(dirname "$LOG_FILE")"
+      
+      exec > >(tee -a "$LOG_FILE") 2>&1
+      
+      echo "=========================================="
+      echo "Demo Workload Starting"
+      echo "Time: $(date)"
+      echo "=========================================="
+      echo ""
+      
+      # System information
+      echo "=== System Information ==="
+      echo "Hostname: $(hostname)"
+      echo "OS: $(uname -a)"
+      echo "CPU: $(nproc) cores"
+      echo "Memory: $(free -h | grep Mem | awk '{print $2}')"
+      echo "Disk: $(df -h / | tail -1 | awk '{print $2}')"
+      echo ""
+      
+      # Check for GPU
+      if command -v nvidia-smi &> /dev/null; then
+          echo "=== GPU Information ==="
+          nvidia-smi
+          echo ""
+      else
+          echo "=== No GPU detected ==="
+          echo ""
+      fi
+      
+      # CPU stress test
+      echo "=== CPU Stress Test ==="
+      echo "Running 60-second stress test on $(nproc) cores..."
+      START_TIME=$(date +%s)
+      stress --cpu $(nproc) --timeout 60s &
+      STRESS_PID=$!
+      
+      # Monitor stress test
+      sleep 2
+      for i in {1..12}; do
+          LOAD=$(uptime | awk -F'load average:' '{print $2}' | awk '{print $1}')
+          echo "  Load average: $LOAD ($(($i * 5))s)"
+          sleep 5
+      done
+      
+      wait $STRESS_PID
+      END_TIME=$(date +%s)
+      DURATION=$((END_TIME - START_TIME))
+      echo "✓ Stress test completed in ${DURATION}s"
+      echo ""
+      
+      # Network bandwidth test with iperf3
+      echo "=== Network Bandwidth Test ==="
+      echo "Testing connection to public iperf3 server..."
+      
+      # Try multiple public servers
+      IPERF_SERVERS=(
+          "iperf.scottlinux.com"
+          "bouygues.iperf.fr"
+          "ping.online.net"
+      )
+      
+      IPERF_SUCCESS=false
+      for server in "${IPERF_SERVERS[@]}"; do
+          echo "Trying $server..."
+          if timeout 15 iperf3 -c "$server" -t 10 -J > /tmp/iperf_result.json 2>&1; then
+              echo "✓ Successfully connected to $server"
+              
+              # Parse results
+              if command -v jq &> /dev/null && [ -f /tmp/iperf_result.json ]; then
+                  BANDWIDTH=$(jq -r '.end.sum_received.bits_per_second // 0' /tmp/iperf_result.json)
+                  BANDWIDTH_MBPS=$(echo "scale=2; $BANDWIDTH / 1000000" | bc)
+                  echo "  Receive bandwidth: ${BANDWIDTH_MBPS} Mbps"
+              else
+                  cat /tmp/iperf_result.json 2>/dev/null || echo "Could not parse results"
+              fi
+              
+              IPERF_SUCCESS=true
+              break
+          else
+              echo "  Failed to connect to $server"
+          fi
+      done
+      
+      if [ "$IPERF_SUCCESS" = false ]; then
+          echo "⚠ Could not complete iperf3 test (all servers unavailable)"
+      fi
+      echo ""
+      
+      # Start iperf3 server
+      echo "=== Starting iperf3 Server ==="
+      echo "Starting iperf3 server on port 5201..."
+      iperf3 -s -D
+      if pgrep iperf3 > /dev/null; then
+          echo "✓ iperf3 server started successfully"
+          echo "  Test with: iperf3 -c $(hostname -I | awk '{print $1}') -t 10"
+      else
+          echo "⚠ Failed to start iperf3 server"
+      fi
+      echo ""
+      
+      # Docker test
+      echo "=== Docker Test ==="
+      if command -v docker &> /dev/null; then
+          echo "Docker version: $(docker --version)"
+          echo "Running hello-world container..."
+          docker run --rm hello-world
+          echo "✓ Docker is functional"
+      else
+          echo "⚠ Docker not available"
+      fi
+      echo ""
+      
+      # Python test
+      echo "=== Python Test ==="
+      if command -v python3 &> /dev/null; then
+          echo "Python version: $(python3 --version)"
+          python3 -c "import sys; print(f'Python executable: {sys.executable}')"
+          echo "✓ Python is functional"
+      else
+          echo "⚠ Python3 not available"
+      fi
+      echo ""
+      
+      echo "=========================================="
+      echo "Demo Workload Completed"
+      echo "Time: $(date)"
+      echo "=========================================="
+      echo ""
+      echo "Logs saved to: $LOG_FILE"
+
+# Run commands after all packages are installed
+runcmd:
+  # Set up Docker permissions
+  - systemctl enable docker
+  - systemctl start docker
+  - usermod -aG docker demo
+  
+  # Create test directory
+  - mkdir -p /home/demo/tests
+  - chown -R demo:demo /home/demo
+  
+  # Run the demo workload script as demo user
+  - su - demo -c '/home/demo/tests/run_tests.sh'
+  
+  # Create completion marker
+  - echo "Cloud-init completed at $(date)" > /root/cloud-init-complete.txt
+
+# Send completion notification
+final_message: |
+  ====================================
+  Cloud-init configuration completed!
+  ====================================
+  
+  Demo workload has been executed.
+  Check results at: /home/demo/tests/demo.log
+  
+  SSH in and run:
+    cat /home/demo/tests/demo.log
+  
+  iperf3 server is running on port 5201
+  Docker and Python are ready to use
+

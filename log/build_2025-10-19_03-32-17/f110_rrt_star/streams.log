@@ -1,0 +1,165 @@
+[0.121s] Invoking command in '/home/Platooning-F1Tenth/build/f110_rrt_star': /usr/bin/cmake /home/Platooning-F1Tenth/src/f110_rrt_star -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/f110_rrt_star
+[1.069s] -- The C compiler identification is GNU 9.4.0
+[1.542s] -- The CXX compiler identification is GNU 9.4.0
+[1.562s] -- Check for working C compiler: /usr/bin/cc
+[2.399s] -- Check for working C compiler: /usr/bin/cc -- works
+[2.400s] -- Detecting C compiler ABI info
+[3.179s] -- Detecting C compiler ABI info - done
+[3.199s] -- Detecting C compile features
+[3.201s] -- Detecting C compile features - done
+[3.213s] -- Check for working CXX compiler: /usr/bin/c++
+[3.928s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[3.930s] -- Detecting CXX compiler ABI info
+[4.710s] -- Detecting CXX compiler ABI info - done
+[4.735s] -- Detecting CXX compile features
+[4.738s] -- Detecting CXX compile features - done
+[4.769s] -- Using CATKIN_DEVEL_PREFIX: /home/Platooning-F1Tenth/build/f110_rrt_star/devel
+[4.776s] -- Using CMAKE_PREFIX_PATH: /opt/ros/noetic
+[4.776s] -- This workspace overlays: /opt/ros/noetic
+[4.876s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[4.879s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[4.887s] -- Using Debian Python package layout
+[5.031s] -- Found PY_em: /usr/lib/python3/dist-packages/em.py  
+[5.037s] -- Using empy: /usr/lib/python3/dist-packages/em.py
+[5.646s] -- Using CATKIN_ENABLE_TESTING: ON
+[5.650s] -- Call enable_testing()
+[5.677s] -- Using CATKIN_TEST_RESULTS_DIR: /home/Platooning-F1Tenth/build/f110_rrt_star/test_results
+[9.023s] -- Forcing gtest/gmock from source, though one was otherwise available.
+[9.025s] -- Found gtest sources under '/usr/src/googletest': gtests will be built
+[9.028s] -- Found gmock sources under '/usr/src/googletest': gmock will be built
+[9.334s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[9.339s] -- Found Threads: TRUE  
+[9.345s] -- Using Python nosetests: /usr/bin/nosetests3
+[9.564s] -- catkin 0.8.12
+[9.566s] -- BUILD_SHARED_LIBS is on
+[11.435s] -- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+[12.793s] -- Configuring done
+[13.918s] -- Generating done
+[14.378s] -- Build files have been written to: /home/Platooning-F1Tenth/build/f110_rrt_star
+[14.386s] Invoked command in '/home/Platooning-F1Tenth/build/f110_rrt_star' returned '0': /usr/bin/cmake /home/Platooning-F1Tenth/src/f110_rrt_star -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/f110_rrt_star
+[14.422s] Invoking command in '/home/Platooning-F1Tenth/build/f110_rrt_star': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/f110_rrt_star -- -j10 -l10
+[14.813s] [35m[1mScanning dependencies of target visualization_msgs_generate_messages_lisp[0m
+[14.818s] [35m[1mScanning dependencies of target actionlib_generate_messages_py[0m
+[14.846s] [35m[1mScanning dependencies of target tf2_msgs_generate_messages_py[0m
+[14.849s] [35m[1mScanning dependencies of target tf2_msgs_generate_messages_cpp[0m
+[14.856s] [35m[1mScanning dependencies of target actionlib_generate_messages_nodejs[0m
+[14.860s] [35m[1mScanning dependencies of target nav_msgs_generate_messages_cpp[0m
+[14.864s] [35m[1mScanning dependencies of target tf2_msgs_generate_messages_nodejs[0m
+[14.872s] [35m[1mScanning dependencies of target tf2_msgs_generate_messages_lisp[0m
+[14.876s] [35m[1mScanning dependencies of target ackermann_msgs_generate_messages_py[0m
+[14.888s] [35m[1mScanning dependencies of target geometry_msgs_generate_messages_cpp[0m
+[14.896s] [  0%] Built target actionlib_generate_messages_py
+[14.904s] [  0%] Built target tf2_msgs_generate_messages_cpp
+[14.911s] [  0%] Built target tf2_msgs_generate_messages_py
+[14.926s] [  0%] Built target actionlib_generate_messages_nodejs
+[14.931s] [  0%] Built target visualization_msgs_generate_messages_lisp
+[14.936s] [  0%] Built target tf2_msgs_generate_messages_nodejs
+[14.939s] [  0%] Built target tf2_msgs_generate_messages_lisp
+[14.948s] [  0%] Built target nav_msgs_generate_messages_cpp
+[14.980s] [  0%] Built target ackermann_msgs_generate_messages_py
+[14.987s] [  0%] Built target geometry_msgs_generate_messages_cpp
+[15.012s] [35m[1mScanning dependencies of target roscpp_generate_messages_lisp[0m
+[15.023s] [35m[1mScanning dependencies of target visualization_msgs_generate_messages_eus[0m
+[15.032s] [35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
+[15.051s] [35m[1mScanning dependencies of target geometry_msgs_generate_messages_eus[0m
+[15.057s] [35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_eus[0m
+[15.066s] [35m[1mScanning dependencies of target nav_msgs_generate_messages_eus[0m
+[15.076s] [35m[1mScanning dependencies of target tf2_msgs_generate_messages_eus[0m
+[15.079s] [35m[1mScanning dependencies of target geometry_msgs_generate_messages_py[0m
+[15.095s] [35m[1mScanning dependencies of target sensor_msgs_generate_messages_py[0m
+[15.100s] [35m[1mScanning dependencies of target nav_msgs_generate_messages_lisp[0m
+[15.183s] [  0%] Built target roscpp_generate_messages_lisp
+[15.227s] [  0%] Built target visualization_msgs_generate_messages_eus
+[15.242s] [  0%] Built target std_msgs_generate_messages_nodejs
+[15.249s] [  0%] Built target geometry_msgs_generate_messages_eus
+[15.269s] [  0%] Built target rosgraph_msgs_generate_messages_eus
+[15.277s] [  0%] Built target nav_msgs_generate_messages_lisp
+[15.287s] [  0%] Built target sensor_msgs_generate_messages_py
+[15.292s] [  0%] Built target nav_msgs_generate_messages_eus
+[15.323s] [  0%] Built target geometry_msgs_generate_messages_py
+[15.335s] [  0%] Built target tf2_msgs_generate_messages_eus
+[15.343s] [35m[1mScanning dependencies of target actionlib_msgs_generate_messages_eus[0m
+[15.353s] [35m[1mScanning dependencies of target actionlib_generate_messages_lisp[0m
+[15.357s] [35m[1mScanning dependencies of target geometry_msgs_generate_messages_nodejs[0m
+[15.360s] [35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_py[0m
+[15.373s] [35m[1mScanning dependencies of target roscpp_generate_messages_eus[0m
+[15.380s] [35m[1mScanning dependencies of target ackermann_msgs_generate_messages_eus[0m
+[15.383s] [35m[1mScanning dependencies of target ackermann_msgs_generate_messages_lisp[0m
+[15.386s] [35m[1mScanning dependencies of target std_msgs_generate_messages_cpp[0m
+[15.392s] [35m[1mScanning dependencies of target ackermann_msgs_generate_messages_nodejs[0m
+[15.400s] [35m[1mScanning dependencies of target std_msgs_generate_messages_py[0m
+[15.427s] [  0%] Built target actionlib_generate_messages_lisp
+[15.435s] [  0%] Built target actionlib_msgs_generate_messages_eus
+[15.442s] [  0%] Built target geometry_msgs_generate_messages_nodejs
+[15.481s] [  0%] Built target roscpp_generate_messages_eus
+[15.665s] [  0%] Built target rosgraph_msgs_generate_messages_py
+[15.723s] [  0%] Built target ackermann_msgs_generate_messages_lisp
+[15.737s] [  0%] Built target ackermann_msgs_generate_messages_eus
+[15.746s] [  0%] Built target std_msgs_generate_messages_cpp
+[15.752s] [  0%] Built target std_msgs_generate_messages_py
+[15.760s] [  0%] Built target ackermann_msgs_generate_messages_nodejs
+[15.785s] [35m[1mScanning dependencies of target tf_generate_messages_eus[0m
+[15.820s] [35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_lisp[0m
+[15.831s] [35m[1mScanning dependencies of target geometry_msgs_generate_messages_lisp[0m
+[15.836s] [35m[1mScanning dependencies of target tf_generate_messages_cpp[0m
+[15.843s] [35m[1mScanning dependencies of target actionlib_msgs_generate_messages_cpp[0m
+[15.892s] [35m[1mScanning dependencies of target visualization_msgs_generate_messages_nodejs[0m
+[15.902s] [35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_nodejs[0m
+[15.923s] [35m[1mScanning dependencies of target actionlib_msgs_generate_messages_py[0m
+[15.931s] [35m[1mScanning dependencies of target std_msgs_generate_messages_lisp[0m
+[15.935s] [35m[1mScanning dependencies of target actionlib_generate_messages_cpp[0m
+[15.945s] [  0%] Built target tf_generate_messages_eus
+[15.949s] [  0%] Built target rosgraph_msgs_generate_messages_lisp
+[15.956s] [  0%] Built target geometry_msgs_generate_messages_lisp
+[15.963s] [  0%] Built target tf_generate_messages_cpp
+[15.971s] [  0%] Built target actionlib_msgs_generate_messages_cpp
+[15.980s] [  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[15.987s] [  0%] Built target std_msgs_generate_messages_lisp
+[15.987s] [  0%] Built target visualization_msgs_generate_messages_nodejs
+[15.989s] [  0%] Built target actionlib_msgs_generate_messages_py
+[15.991s] [35m[1mScanning dependencies of target roscpp_generate_messages_cpp[0m
+[16.003s] [35m[1mScanning dependencies of target visualization_msgs_generate_messages_py[0m
+[16.009s] [  0%] Built target actionlib_generate_messages_cpp
+[16.021s] [35m[1mScanning dependencies of target sensor_msgs_generate_messages_lisp[0m
+[16.022s] [35m[1mScanning dependencies of target visualization_msgs_generate_messages_cpp[0m
+[16.023s] [35m[1mScanning dependencies of target roscpp_generate_messages_nodejs[0m
+[16.031s] [35m[1mScanning dependencies of target sensor_msgs_generate_messages_eus[0m
+[16.048s] [35m[1mScanning dependencies of target roscpp_generate_messages_py[0m
+[16.058s] [35m[1mScanning dependencies of target actionlib_msgs_generate_messages_nodejs[0m
+[16.077s] [35m[1mScanning dependencies of target std_msgs_generate_messages_eus[0m
+[16.090s] [35m[1mScanning dependencies of target actionlib_msgs_generate_messages_lisp[0m
+[16.095s] [  0%] Built target roscpp_generate_messages_cpp
+[16.104s] [  0%] Built target sensor_msgs_generate_messages_lisp
+[16.112s] [  0%] Built target visualization_msgs_generate_messages_py
+[16.223s] [  0%] Built target visualization_msgs_generate_messages_cpp
+[16.246s] [  0%] Built target roscpp_generate_messages_nodejs
+[16.319s] [  0%] Built target sensor_msgs_generate_messages_eus
+[16.347s] [  0%] Built target actionlib_msgs_generate_messages_lisp
+[16.357s] [  0%] Built target std_msgs_generate_messages_eus
+[16.357s] [35m[1mScanning dependencies of target tf_generate_messages_py[0m
+[16.357s] [  0%] Built target actionlib_msgs_generate_messages_nodejs
+[16.364s] [  0%] Built target roscpp_generate_messages_py
+[16.436s] [35m[1mScanning dependencies of target nav_msgs_generate_messages_nodejs[0m
+[16.473s] [35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_cpp[0m
+[16.519s] [35m[1mScanning dependencies of target actionlib_generate_messages_eus[0m
+[16.551s] [35m[1mScanning dependencies of target tf_generate_messages_lisp[0m
+[16.556s] [35m[1mScanning dependencies of target sensor_msgs_generate_messages_nodejs[0m
+[16.562s] [35m[1mScanning dependencies of target sensor_msgs_generate_messages_cpp[0m
+[16.614s] [  0%] Built target tf_generate_messages_py
+[16.631s] [35m[1mScanning dependencies of target ackermann_msgs_generate_messages_cpp[0m
+[16.668s] [35m[1mScanning dependencies of target nav_msgs_generate_messages_py[0m
+[16.753s] [35m[1mScanning dependencies of target tf_generate_messages_nodejs[0m
+[16.770s] [  0%] Built target nav_msgs_generate_messages_nodejs
+[16.776s] [  0%] Built target actionlib_generate_messages_eus
+[16.794s] [  0%] Built target rosgraph_msgs_generate_messages_cpp
+[16.864s] [  0%] Built target sensor_msgs_generate_messages_cpp
+[16.874s] [  0%] Built target tf_generate_messages_lisp
+[16.883s] [  0%] Built target sensor_msgs_generate_messages_nodejs
+[16.934s] [  0%] Built target ackermann_msgs_generate_messages_cpp
+[16.990s] [  0%] Built target tf_generate_messages_nodejs
+[17.004s] [  0%] Built target nav_msgs_generate_messages_py
+[17.173s] [35m[1mScanning dependencies of target rrt_node[0m
+[17.872s] [ 33%] [32mBuilding CXX object CMakeFiles/rrt_node.dir/node/rrt_node.cpp.o[0m
+[17.875s] [ 66%] [32mBuilding CXX object CMakeFiles/rrt_node.dir/src/rrt.cpp.o[0m
+[35.708s] [100%] [32m[1mLinking CXX executable devel/lib/f110_rrt_star/rrt_node[0m
+[36.639s] [100%] Built target rrt_node

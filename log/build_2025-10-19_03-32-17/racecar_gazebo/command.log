@@ -1,0 +1,1 @@
+Invoking command in '/home/Platooning-F1Tenth/build/racecar_gazebo': /usr/bin/cmake /home/Platooning-F1Tenth/src/simulator/racecar-simulator/racecar_gazebo -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/racecar_gazebo

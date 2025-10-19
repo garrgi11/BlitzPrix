@@ -1,0 +1,8 @@
+[01m[K/home/Platooning-F1Tenth/src/map_server/src/image_loader.cpp:43:10:[m[K [01;31m[Kfatal error: [m[KSDL/SDL_image.h: No such file or directory
+   43 | #include [01;31m[K<SDL/SDL_image.h>[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/image_loader.dir/build.make:63: CMakeFiles/image_loader.dir/src/image_loader.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:2018: CMakeFiles/image_loader.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:141: all] Error 2

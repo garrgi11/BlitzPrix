@@ -1,0 +1,1 @@
+Invoking command in '/home/Platooning-F1Tenth/build/rtreach': /usr/bin/cmake /home/Platooning-F1Tenth/src/rtreach -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/rtreach

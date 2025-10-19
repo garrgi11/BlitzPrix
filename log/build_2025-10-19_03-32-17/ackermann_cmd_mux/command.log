@@ -1,0 +1,3 @@
+Invoking command in '/home/Platooning-F1Tenth/build/ackermann_cmd_mux': /usr/bin/cmake /home/Platooning-F1Tenth/src/ackermann_cmd_mux -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/ackermann_cmd_mux
+Invoked command in '/home/Platooning-F1Tenth/build/ackermann_cmd_mux' returned '0': /usr/bin/cmake /home/Platooning-F1Tenth/src/ackermann_cmd_mux -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/ackermann_cmd_mux
+Invoking command in '/home/Platooning-F1Tenth/build/ackermann_cmd_mux': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/ackermann_cmd_mux -- -j10 -l10

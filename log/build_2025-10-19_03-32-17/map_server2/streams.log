@@ -1,0 +1,163 @@
+[0.120s] Invoking command in '/home/Platooning-F1Tenth/build/map_server2': /usr/bin/cmake /home/Platooning-F1Tenth/src/map_server -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/map_server2
+[1.068s] -- The C compiler identification is GNU 9.4.0
+[1.560s] -- The CXX compiler identification is GNU 9.4.0
+[1.579s] -- Check for working C compiler: /usr/bin/cc
+[2.413s] -- Check for working C compiler: /usr/bin/cc -- works
+[2.415s] -- Detecting C compiler ABI info
+[3.173s] -- Detecting C compiler ABI info - done
+[3.194s] -- Detecting C compile features
+[3.194s] -- Detecting C compile features - done
+[3.209s] -- Check for working CXX compiler: /usr/bin/c++
+[3.918s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[3.919s] -- Detecting CXX compiler ABI info
+[4.692s] -- Detecting CXX compiler ABI info - done
+[4.709s] -- Detecting CXX compile features
+[4.717s] -- Detecting CXX compile features - done
+[4.745s] -- Using CATKIN_DEVEL_PREFIX: /home/Platooning-F1Tenth/build/map_server2/devel
+[4.750s] -- Using CMAKE_PREFIX_PATH: /opt/ros/noetic
+[4.756s] -- This workspace overlays: /opt/ros/noetic
+[4.879s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[4.879s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[4.879s] -- Using Debian Python package layout
+[5.029s] -- Found PY_em: /usr/lib/python3/dist-packages/em.py  
+[5.033s] -- Using empy: /usr/lib/python3/dist-packages/em.py
+[5.557s] -- Using CATKIN_ENABLE_TESTING: ON
+[5.558s] -- Call enable_testing()
+[5.582s] -- Using CATKIN_TEST_RESULTS_DIR: /home/Platooning-F1Tenth/build/map_server2/test_results
+[8.797s] -- Forcing gtest/gmock from source, though one was otherwise available.
+[8.799s] -- Found gtest sources under '/usr/src/googletest': gtests will be built
+[8.804s] -- Found gmock sources under '/usr/src/googletest': gmock will be built
+[8.946s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[8.947s] -- Found Threads: TRUE  
+[8.959s] -- Using Python nosetests: /usr/bin/nosetests3
+[9.333s] -- catkin 0.8.12
+[9.334s] -- BUILD_SHARED_LIBS is on
+[11.200s] -- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+[11.867s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake (found version "1.71.0") found components: system 
+[11.916s] -- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") 
+[11.919s] -- Checking for module 'yaml-cpp>=0.5'
+[12.078s] --   Found yaml-cpp, version 0.6.2
+[13.184s] -- Configuring done
+[14.372s] -- Generating done
+[15.394s] -- Build files have been written to: /home/Platooning-F1Tenth/build/map_server2
+[15.895s] Invoked command in '/home/Platooning-F1Tenth/build/map_server2' returned '0': /usr/bin/cmake /home/Platooning-F1Tenth/src/map_server -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/map_server2
+[15.921s] Invoking command in '/home/Platooning-F1Tenth/build/map_server2': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/map_server2 -- -j10 -l10
+[16.314s] [35m[1mScanning dependencies of target tf_generate_messages_nodejs[0m
+[16.317s] [35m[1mScanning dependencies of target gtest[0m
+[16.321s] [35m[1mScanning dependencies of target actionlib_msgs_generate_messages_py[0m
+[16.324s] [35m[1mScanning dependencies of target geometry_msgs_generate_messages_eus[0m
+[16.325s] [35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_nodejs[0m
+[16.337s] [35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
+[16.341s] [35m[1mScanning dependencies of target actionlib_generate_messages_cpp[0m
+[16.347s] [35m[1mScanning dependencies of target std_msgs_generate_messages_py[0m
+[16.348s] [35m[1mScanning dependencies of target std_msgs_generate_messages_cpp[0m
+[16.489s] [  0%] Built target tf_generate_messages_nodejs
+[16.521s] [35m[1mScanning dependencies of target tf2_msgs_generate_messages_cpp[0m
+[16.535s] [  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[16.539s] [  0%] Built target actionlib_msgs_generate_messages_py
+[16.545s] [  0%] Built target std_msgs_generate_messages_py
+[16.554s] [  0%] Built target std_msgs_generate_messages_cpp
+[16.556s] [  0%] Built target actionlib_generate_messages_cpp
+[16.615s] [  0%] Built target std_msgs_generate_messages_nodejs
+[16.672s] [  0%] Built target geometry_msgs_generate_messages_eus
+[16.681s] [  9%] [32mBuilding CXX object gtest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o[0m
+[16.712s] [35m[1mScanning dependencies of target roscpp_generate_messages_lisp[0m
+[16.730s] [35m[1mScanning dependencies of target actionlib_generate_messages_lisp[0m
+[16.798s] [35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_lisp[0m
+[16.813s] [35m[1mScanning dependencies of target std_msgs_generate_messages_lisp[0m
+[16.840s] [  9%] Built target tf2_msgs_generate_messages_cpp
+[16.847s] [35m[1mScanning dependencies of target tf_generate_messages_eus[0m
+[16.881s] [35m[1mScanning dependencies of target actionlib_msgs_generate_messages_eus[0m
+[16.884s] [35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_py[0m
+[16.950s] [35m[1mScanning dependencies of target roscpp_generate_messages_py[0m
+[17.006s] [  9%] Built target actionlib_generate_messages_lisp
+[17.014s] [35m[1mScanning dependencies of target roscpp_generate_messages_cpp[0m
+[17.018s] [  9%] Built target roscpp_generate_messages_lisp
+[17.049s] [  9%] Built target actionlib_msgs_generate_messages_eus
+[17.051s] [  9%] Built target std_msgs_generate_messages_lisp
+[17.093s] [  9%] Built target roscpp_generate_messages_py
+[17.106s] [  9%] Built target rosgraph_msgs_generate_messages_py
+[17.109s] [  9%] Built target tf_generate_messages_eus
+[17.129s] [  9%] Built target rosgraph_msgs_generate_messages_lisp
+[17.145s] [35m[1mScanning dependencies of target roscpp_generate_messages_eus[0m
+[17.197s] [35m[1mScanning dependencies of target tf2_msgs_generate_messages_py[0m
+[17.239s] [  9%] Built target roscpp_generate_messages_cpp
+[17.266s] [35m[1mScanning dependencies of target geometry_msgs_generate_messages_cpp[0m
+[17.295s] [35m[1mScanning dependencies of target geometry_msgs_generate_messages_nodejs[0m
+[17.299s] [35m[1mScanning dependencies of target tf_generate_messages_cpp[0m
+[17.331s] [  9%] Built target roscpp_generate_messages_eus
+[17.338s] [35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_eus[0m
+[17.342s] [35m[1mScanning dependencies of target roscpp_generate_messages_nodejs[0m
+[17.344s] [35m[1mScanning dependencies of target geometry_msgs_generate_messages_lisp[0m
+[17.370s] [  9%] Built target tf2_msgs_generate_messages_py
+[17.376s] [35m[1mScanning dependencies of target nav_msgs_generate_messages_cpp[0m
+[17.445s] [  9%] Built target geometry_msgs_generate_messages_cpp
+[17.476s] [  9%] Built target tf_generate_messages_cpp
+[17.503s] [  9%] Built target geometry_msgs_generate_messages_lisp
+[17.504s] [  9%] Built target rosgraph_msgs_generate_messages_eus
+[17.507s] [  9%] Built target geometry_msgs_generate_messages_nodejs
+[17.511s] [  9%] Built target roscpp_generate_messages_nodejs
+[17.534s] [35m[1mScanning dependencies of target tf2_msgs_generate_messages_eus[0m
+[17.537s] [  9%] Built target nav_msgs_generate_messages_cpp
+[17.541s] [35m[1mScanning dependencies of target sensor_msgs_generate_messages_py[0m
+[17.627s] [35m[1mScanning dependencies of target nav_msgs_generate_messages_nodejs[0m
+[17.640s] [35m[1mScanning dependencies of target nav_msgs_generate_messages_py[0m
+[17.668s] [35m[1mScanning dependencies of target tf_generate_messages_lisp[0m
+[17.676s] [35m[1mScanning dependencies of target sensor_msgs_generate_messages_nodejs[0m
+[17.691s] [  9%] Built target sensor_msgs_generate_messages_py
+[17.707s] [35m[1mScanning dependencies of target sensor_msgs_generate_messages_cpp[0m
+[17.710s] [35m[1mScanning dependencies of target sensor_msgs_generate_messages_lisp[0m
+[17.717s] [  9%] Built target tf2_msgs_generate_messages_eus
+[17.723s] [35m[1mScanning dependencies of target sensor_msgs_generate_messages_eus[0m
+[17.763s] [  9%] Built target nav_msgs_generate_messages_nodejs
+[17.876s] [35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_cpp[0m
+[17.883s] [35m[1mScanning dependencies of target actionlib_generate_messages_eus[0m
+[17.890s] [  9%] Built target sensor_msgs_generate_messages_cpp
+[17.902s] [  9%] Built target tf_generate_messages_lisp
+[17.913s] [  9%] Built target sensor_msgs_generate_messages_lisp
+[17.916s] [  9%] Built target sensor_msgs_generate_messages_eus
+[17.918s] [  9%] Built target nav_msgs_generate_messages_py
+[17.919s] [  9%] Built target sensor_msgs_generate_messages_nodejs
+[17.961s] [35m[1mScanning dependencies of target actionlib_msgs_generate_messages_cpp[0m
+[18.089s] [  9%] Built target rosgraph_msgs_generate_messages_cpp
+[18.094s] [  9%] Built target actionlib_generate_messages_eus
+[18.112s] [35m[1mScanning dependencies of target actionlib_generate_messages_nodejs[0m
+[18.126s] [  9%] Built target actionlib_msgs_generate_messages_cpp
+[18.136s] [35m[1mScanning dependencies of target actionlib_generate_messages_py[0m
+[18.208s] [35m[1mScanning dependencies of target actionlib_msgs_generate_messages_lisp[0m
+[18.211s] [35m[1mScanning dependencies of target std_msgs_generate_messages_eus[0m
+[18.230s] [35m[1mScanning dependencies of target actionlib_msgs_generate_messages_nodejs[0m
+[18.262s] [35m[1mScanning dependencies of target tf_generate_messages_py[0m
+[18.279s] [  9%] Built target actionlib_generate_messages_nodejs
+[18.299s] [35m[1mScanning dependencies of target nav_msgs_generate_messages_eus[0m
+[18.307s] [35m[1mScanning dependencies of target geometry_msgs_generate_messages_py[0m
+[18.349s] [  9%] Built target actionlib_msgs_generate_messages_lisp
+[18.411s] [  9%] Built target std_msgs_generate_messages_eus
+[18.421s] [  9%] Built target actionlib_generate_messages_py
+[18.423s] [  9%] Built target actionlib_msgs_generate_messages_nodejs
+[18.452s] [35m[1mScanning dependencies of target tf2_msgs_generate_messages_lisp[0m
+[18.500s] [  9%] Built target nav_msgs_generate_messages_eus
+[18.571s] [35m[1mScanning dependencies of target tf2_msgs_generate_messages_nodejs[0m
+[18.584s] [  9%] Built target tf_generate_messages_py
+[18.592s] [35m[1mScanning dependencies of target nav_msgs_generate_messages_lisp[0m
+[18.596s] [  9%] Built target geometry_msgs_generate_messages_py
+[18.659s] [35m[1mScanning dependencies of target map_server-map_saver[0m
+[18.674s] [35m[1mScanning dependencies of target image_loader[0m
+[18.716s] [  9%] Built target tf2_msgs_generate_messages_lisp
+[18.724s] [  9%] Built target tf2_msgs_generate_messages_nodejs
+[18.746s] [  9%] Built target nav_msgs_generate_messages_lisp
+[19.190s] [ 18%] [32mBuilding CXX object CMakeFiles/map_server-map_saver.dir/src/map_saver.cpp.o[0m
+[19.349s] [ 27%] [32mBuilding CXX object CMakeFiles/image_loader.dir/src/image_loader.cpp.o[0m
+[19.788s] [01m[K/home/Platooning-F1Tenth/src/map_server/src/image_loader.cpp:43:10:[m[K [01;31m[Kfatal error: [m[KSDL/SDL_image.h: No such file or directory
+[19.793s]    43 | #include [01;31m[K<SDL/SDL_image.h>[m[K
+[19.795s]       |          [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[19.797s] compilation terminated.
+[19.799s] make[2]: *** [CMakeFiles/image_loader.dir/build.make:63: CMakeFiles/image_loader.dir/src/image_loader.cpp.o] Error 1
+[19.801s] make[1]: *** [CMakeFiles/Makefile2:2018: CMakeFiles/image_loader.dir/all] Error 2
+[19.804s] make[1]: *** Waiting for unfinished jobs....
+[27.815s] [ 36%] [32m[1mLinking CXX shared library ../lib/libgtest.so[0m
+[29.458s] [ 45%] [32m[1mLinking CXX executable devel/lib/map_server2/map_saver[0m
+[29.544s] [ 45%] Built target gtest
+[31.226s] make: *** [Makefile:141: all] Error 2
+[31.234s] [ 45%] Built target map_server-map_saver
+[31.619s] Invoked command in '/home/Platooning-F1Tenth/build/map_server2' returned '2': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/map_server2 -- -j10 -l10

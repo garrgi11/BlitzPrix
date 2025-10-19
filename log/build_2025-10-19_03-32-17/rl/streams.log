@@ -1,0 +1,44 @@
+[0.542s] Invoking command in '/home/Platooning-F1Tenth/build/rl': /usr/bin/cmake /home/Platooning-F1Tenth/src/rl -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/rl
+[5.126s] -- The C compiler identification is GNU 9.4.0
+[5.130s] -- The CXX compiler identification is GNU 9.4.0
+[5.151s] -- Check for working C compiler: /usr/bin/cc
+[5.153s] -- Check for working C compiler: /usr/bin/cc -- works
+[5.153s] -- Detecting C compiler ABI info
+[5.159s] -- Detecting C compiler ABI info - done
+[5.163s] -- Detecting C compile features
+[5.173s] -- Detecting C compile features - done
+[5.179s] -- Check for working CXX compiler: /usr/bin/c++
+[7.015s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[7.027s] -- Detecting CXX compiler ABI info
+[9.443s] -- Detecting CXX compiler ABI info - done
+[9.571s] -- Detecting CXX compile features
+[9.573s] -- Detecting CXX compile features - done
+[9.663s] -- Using CATKIN_DEVEL_PREFIX: /home/Platooning-F1Tenth/build/rl/devel
+[9.690s] -- Using CMAKE_PREFIX_PATH: /opt/ros/noetic
+[9.705s] -- This workspace overlays: /opt/ros/noetic
+[10.237s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[10.265s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[10.266s] -- Using Debian Python package layout
+[11.197s] -- Found PY_em: /usr/lib/python3/dist-packages/em.py  
+[11.201s] -- Using empy: /usr/lib/python3/dist-packages/em.py
+[13.075s] -- Using CATKIN_ENABLE_TESTING: ON
+[13.079s] -- Call enable_testing()
+[13.141s] -- Using CATKIN_TEST_RESULTS_DIR: /home/Platooning-F1Tenth/build/rl/test_results
+[19.427s] -- Forcing gtest/gmock from source, though one was otherwise available.
+[19.431s] -- Found gtest sources under '/usr/src/googletest': gtests will be built
+[19.434s] -- Found gmock sources under '/usr/src/googletest': gmock will be built
+[19.599s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[19.601s] -- Found Threads: TRUE  
+[19.610s] -- Using Python nosetests: /usr/bin/nosetests3
+[19.815s] -- catkin 0.8.12
+[19.819s] -- BUILD_SHARED_LIBS is on
+[21.015s] WARNING: package 'gazebo_ros' is deprecated (This package has been deprecated as of January 2025 with Gazebo classic 11 reaching
+[21.016s]       end-of-life. Users are highly encouraged to migrate to the new Gazebo
+[21.018s]       using our migration guides (https://gazebosim.org/docs/latest/gazebo_classic_migration))
+[21.274s] -- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+[21.359s] WARNING: package 'gazebo_msgs' is deprecated (This package has been deprecated as of January 2025 with Gazebo classic 11 reaching
+[21.362s]       end-of-life. Users are highly encouraged to migrate to the new Gazebo
+[21.364s]       using our migration guides (https://gazebosim.org/docs/latest/gazebo_classic_migration))
+[24.231s] -- Configuring done
+[24.756s] -- Generating done
+[25.007s] -- Build files have been written to: /home/Platooning-F1Tenth/build/rl

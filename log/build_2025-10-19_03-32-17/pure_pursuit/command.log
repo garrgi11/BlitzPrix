@@ -1,0 +1,8 @@
+Invoking command in '/home/Platooning-F1Tenth/build/pure_pursuit': /usr/bin/cmake /home/Platooning-F1Tenth/src/pure_pursuit -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/pure_pursuit
+Invoked command in '/home/Platooning-F1Tenth/build/pure_pursuit' returned '0': /usr/bin/cmake /home/Platooning-F1Tenth/src/pure_pursuit -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/pure_pursuit
+Invoking command in '/home/Platooning-F1Tenth/build/pure_pursuit': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/pure_pursuit -- -j10 -l10
+Invoked command in '/home/Platooning-F1Tenth/build/pure_pursuit' returned '0': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/pure_pursuit -- -j10 -l10
+Invoking command in '/home/Platooning-F1Tenth/build/pure_pursuit': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/pure_pursuit --target tests -- -j10 -l10
+Invoked command in '/home/Platooning-F1Tenth/build/pure_pursuit' returned '0': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/pure_pursuit --target tests -- -j10 -l10
+Invoking command in '/home/Platooning-F1Tenth/build/pure_pursuit': /usr/bin/cmake --install /home/Platooning-F1Tenth/build/pure_pursuit
+Invoked command in '/home/Platooning-F1Tenth/build/pure_pursuit' returned '0': /usr/bin/cmake --install /home/Platooning-F1Tenth/build/pure_pursuit

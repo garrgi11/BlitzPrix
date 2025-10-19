@@ -1,0 +1,12 @@
+# Logs
+logs/*.log
+
+# Environment variables
+.env
+
+# macOS
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp

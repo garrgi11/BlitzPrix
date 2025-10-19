@@ -1,0 +1,80 @@
+[0.147s] Invoking command in '/home/Platooning-F1Tenth/build/racecar': /usr/bin/cmake /home/Platooning-F1Tenth/src/racecar -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/racecar
+[13.301s] -- The C compiler identification is GNU 9.4.0
+[13.305s] -- The CXX compiler identification is GNU 9.4.0
+[13.308s] -- Check for working C compiler: /usr/bin/cc
+[13.319s] -- Check for working C compiler: /usr/bin/cc -- works
+[13.323s] -- Detecting C compiler ABI info
+[13.327s] -- Detecting C compiler ABI info - done
+[13.331s] -- Detecting C compile features
+[13.335s] -- Detecting C compile features - done
+[13.337s] -- Check for working CXX compiler: /usr/bin/c++
+[13.340s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[13.344s] -- Detecting CXX compiler ABI info
+[13.346s] -- Detecting CXX compiler ABI info - done
+[13.352s] -- Detecting CXX compile features
+[13.360s] -- Detecting CXX compile features - done
+[13.365s] -- Using CATKIN_DEVEL_PREFIX: /home/Platooning-F1Tenth/build/racecar/devel
+[13.372s] -- Using CMAKE_PREFIX_PATH: /opt/ros/noetic
+[13.379s] -- This workspace overlays: /opt/ros/noetic
+[13.383s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[13.384s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[13.387s] -- Using Debian Python package layout
+[13.393s] -- Found PY_em: /usr/lib/python3/dist-packages/em.py  
+[13.396s] -- Using empy: /usr/lib/python3/dist-packages/em.py
+[13.400s] -- Using CATKIN_ENABLE_TESTING: ON
+[13.406s] -- Call enable_testing()
+[13.411s] -- Using CATKIN_TEST_RESULTS_DIR: /home/Platooning-F1Tenth/build/racecar/test_results
+[13.416s] -- Forcing gtest/gmock from source, though one was otherwise available.
+[13.420s] -- Found gtest sources under '/usr/src/googletest': gtests will be built
+[13.422s] -- Found gmock sources under '/usr/src/googletest': gmock will be built
+[13.427s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[13.434s] -- Found Threads: TRUE  
+[13.444s] -- Using Python nosetests: /usr/bin/nosetests3
+[13.448s] -- catkin 0.8.12
+[13.451s] -- BUILD_SHARED_LIBS is on
+[13.452s] -- Configuring done
+[13.454s] -- Generating done
+[13.457s] -- Build files have been written to: /home/Platooning-F1Tenth/build/racecar
+[13.611s] Invoked command in '/home/Platooning-F1Tenth/build/racecar' returned '0': /usr/bin/cmake /home/Platooning-F1Tenth/src/racecar -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/racecar
+[13.623s] Invoking command in '/home/Platooning-F1Tenth/build/racecar': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/racecar -- -j10 -l10
+[13.832s] Invoked command in '/home/Platooning-F1Tenth/build/racecar' returned '0': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/racecar -- -j10 -l10
+[13.840s] Invoking command in '/home/Platooning-F1Tenth/build/racecar': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/racecar --target tests -- -j10 -l10
+[14.208s] [35m[1mScanning dependencies of target tests[0m
+[14.211s] Built target tests
+[14.233s] Invoked command in '/home/Platooning-F1Tenth/build/racecar' returned '0': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/racecar --target tests -- -j10 -l10
+[14.244s] Invoking command in '/home/Platooning-F1Tenth/build/racecar': /usr/bin/cmake --install /home/Platooning-F1Tenth/build/racecar
+[14.540s] -- Install configuration: ""
+[14.547s] -- Installing: /home/Platooning-F1Tenth/install/racecar/lib/pkgconfig/racecar.pc
+[14.551s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/cmake/racecarConfig.cmake
+[14.555s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/cmake/racecarConfig-version.cmake
+[14.564s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/package.xml
+[14.569s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch
+[14.574s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch/mux.launch
+[14.584s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch/teleop.launch
+[14.596s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch/replay_bag_file
+[14.601s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch/replay_bag_file/replay_bag_mapping.launch
+[14.602s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch/replay_bag_file/replay_bag_file.launch
+[14.603s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch/replay_bag_file/replay_bag_with_lidar_processing.launch
+[14.608s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch/includes
+[14.611s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch/includes/racecar-v2
+[14.618s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch/includes/racecar-v2/vesc.launch.xml
+[14.622s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch/includes/racecar-v2/static_transforms.launch.xml
+[14.632s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch/includes/common
+[14.636s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch/includes/common/sensors.launch.xml
+[14.648s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch/includes/common/joy_teleop.launch.xml
+[14.657s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch/includes/racecar-v2-teleop.launch.xml
+[14.661s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch/known_map_localization.launch
+[14.664s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/launch/mux_gen.launch
+[14.665s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/config
+[14.675s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/config/racecar-v2
+[14.680s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/config/racecar-v2/low_level_mux.yaml
+[14.693s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/config/racecar-v2/sensors.yaml
+[14.705s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/config/racecar-v2/joy_teleop.yaml
+[14.709s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/config/racecar-v2/vesc.yaml
+[14.712s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/config/racecar-v2/vesc_new.yaml
+[14.718s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/config/racecar-v2/high_level_mux.yaml
+[14.722s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/rviz
+[14.725s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/rviz/known_map_localization.rviz
+[14.726s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/rviz/mapping.rviz
+[14.731s] -- Installing: /home/Platooning-F1Tenth/install/racecar/share/racecar/rviz/laser_scan_matcher.rviz
+[15.238s] Invoked command in '/home/Platooning-F1Tenth/build/racecar' returned '0': /usr/bin/cmake --install /home/Platooning-F1Tenth/build/racecar

@@ -1,0 +1,51 @@
+[0.120s] Invoking command in '/home/Platooning-F1Tenth/build/computer_vision': /usr/bin/cmake /home/Platooning-F1Tenth/src/computer_vision -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/computer_vision
+[1.073s] -- The C compiler identification is GNU 9.4.0
+[1.556s] -- The CXX compiler identification is GNU 9.4.0
+[1.578s] -- Check for working C compiler: /usr/bin/cc
+[2.415s] -- Check for working C compiler: /usr/bin/cc -- works
+[2.419s] -- Detecting C compiler ABI info
+[3.152s] -- Detecting C compiler ABI info - done
+[3.176s] -- Detecting C compile features
+[3.179s] -- Detecting C compile features - done
+[3.192s] -- Check for working CXX compiler: /usr/bin/c++
+[3.888s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[3.893s] -- Detecting CXX compiler ABI info
+[4.679s] -- Detecting CXX compiler ABI info - done
+[4.703s] -- Detecting CXX compile features
+[4.706s] -- Detecting CXX compile features - done
+[4.722s] -- Using CATKIN_DEVEL_PREFIX: /home/Platooning-F1Tenth/build/computer_vision/devel
+[4.736s] -- Using CMAKE_PREFIX_PATH: /opt/ros/noetic
+[4.739s] -- This workspace overlays: /opt/ros/noetic
+[4.833s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[4.835s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[4.836s] -- Using Debian Python package layout
+[4.998s] -- Found PY_em: /usr/lib/python3/dist-packages/em.py  
+[5.002s] -- Using empy: /usr/lib/python3/dist-packages/em.py
+[5.565s] -- Using CATKIN_ENABLE_TESTING: ON
+[5.568s] -- Call enable_testing()
+[5.592s] -- Using CATKIN_TEST_RESULTS_DIR: /home/Platooning-F1Tenth/build/computer_vision/test_results
+[8.794s] -- Forcing gtest/gmock from source, though one was otherwise available.
+[8.799s] -- Found gtest sources under '/usr/src/googletest': gtests will be built
+[8.801s] -- Found gmock sources under '/usr/src/googletest': gmock will be built
+[8.955s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[8.960s] -- Found Threads: TRUE  
+[8.968s] -- Using Python nosetests: /usr/bin/nosetests3
+[9.335s] -- catkin 0.8.12
+[9.337s] -- BUILD_SHARED_LIBS is on
+[10.921s] WARNING: package 'gazebo_ros' is deprecated (This package has been deprecated as of January 2025 with Gazebo classic 11 reaching
+[10.923s]       end-of-life. Users are highly encouraged to migrate to the new Gazebo
+[10.925s]       using our migration guides (https://gazebosim.org/docs/latest/gazebo_classic_migration))
+[11.302s] -- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+[11.423s] WARNING: package 'gazebo_msgs' is deprecated (This package has been deprecated as of January 2025 with Gazebo classic 11 reaching
+[11.429s]       end-of-life. Users are highly encouraged to migrate to the new Gazebo
+[11.433s]       using our migration guides (https://gazebosim.org/docs/latest/gazebo_classic_migration))
+[13.705s] WARNING: 'catkin' should be listed as a buildtool dependency in the package.xml (instead of build dependency)
+[14.027s] -- Configuring done
+[15.428s] -- Generating done
+[16.473s] -- Build files have been written to: /home/Platooning-F1Tenth/build/computer_vision
+[16.483s] Invoked command in '/home/Platooning-F1Tenth/build/computer_vision' returned '0': /usr/bin/cmake /home/Platooning-F1Tenth/src/computer_vision -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/computer_vision
+[16.531s] Invoking command in '/home/Platooning-F1Tenth/build/computer_vision': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/computer_vision -- -j10 -l10
+[31.610s] Invoked command in '/home/Platooning-F1Tenth/build/computer_vision' returned '0': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/computer_vision -- -j10 -l10
+[31.627s] Invoking command in '/home/Platooning-F1Tenth/build/computer_vision': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/computer_vision --target tests -- -j10 -l10
+[36.721s] [35m[1mScanning dependencies of target tests[0m
+[36.722s] Built target tests

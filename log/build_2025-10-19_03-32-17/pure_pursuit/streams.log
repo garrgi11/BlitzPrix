@@ -1,0 +1,80 @@
+[0.116s] Invoking command in '/home/Platooning-F1Tenth/build/pure_pursuit': /usr/bin/cmake /home/Platooning-F1Tenth/src/pure_pursuit -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/pure_pursuit
+[13.172s] -- The C compiler identification is GNU 9.4.0
+[13.176s] -- The CXX compiler identification is GNU 9.4.0
+[13.177s] -- Check for working C compiler: /usr/bin/cc
+[13.187s] -- Check for working C compiler: /usr/bin/cc -- works
+[13.189s] -- Detecting C compiler ABI info
+[13.189s] -- Detecting C compiler ABI info - done
+[13.191s] -- Detecting C compile features
+[13.192s] -- Detecting C compile features - done
+[13.195s] -- Check for working CXX compiler: /usr/bin/c++
+[13.198s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[13.202s] -- Detecting CXX compiler ABI info
+[13.208s] -- Detecting CXX compiler ABI info - done
+[13.212s] -- Detecting CXX compile features
+[13.213s] -- Detecting CXX compile features - done
+[13.214s] -- Using CATKIN_DEVEL_PREFIX: /home/Platooning-F1Tenth/build/pure_pursuit/devel
+[13.215s] -- Using CMAKE_PREFIX_PATH: /opt/ros/noetic
+[13.219s] -- This workspace overlays: /opt/ros/noetic
+[13.225s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[13.226s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[13.236s] -- Using Debian Python package layout
+[13.244s] -- Found PY_em: /usr/lib/python3/dist-packages/em.py  
+[13.245s] -- Using empy: /usr/lib/python3/dist-packages/em.py
+[13.249s] -- Using CATKIN_ENABLE_TESTING: ON
+[13.255s] -- Call enable_testing()
+[13.260s] -- Using CATKIN_TEST_RESULTS_DIR: /home/Platooning-F1Tenth/build/pure_pursuit/test_results
+[13.264s] -- Forcing gtest/gmock from source, though one was otherwise available.
+[13.268s] -- Found gtest sources under '/usr/src/googletest': gtests will be built
+[13.274s] -- Found gmock sources under '/usr/src/googletest': gmock will be built
+[13.275s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[13.280s] -- Found Threads: TRUE  
+[13.284s] -- Using Python nosetests: /usr/bin/nosetests3
+[13.290s] -- catkin 0.8.12
+[13.293s] -- BUILD_SHARED_LIBS is on
+[13.296s] -- Configuring done
+[13.300s] -- Generating done
+[13.305s] -- Build files have been written to: /home/Platooning-F1Tenth/build/pure_pursuit
+[13.589s] Invoked command in '/home/Platooning-F1Tenth/build/pure_pursuit' returned '0': /usr/bin/cmake /home/Platooning-F1Tenth/src/pure_pursuit -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/pure_pursuit
+[13.594s] Invoking command in '/home/Platooning-F1Tenth/build/pure_pursuit': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/pure_pursuit -- -j10 -l10
+[13.648s] Invoked command in '/home/Platooning-F1Tenth/build/pure_pursuit' returned '0': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/pure_pursuit -- -j10 -l10
+[13.665s] Invoking command in '/home/Platooning-F1Tenth/build/pure_pursuit': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/pure_pursuit --target tests -- -j10 -l10
+[13.966s] [35m[1mScanning dependencies of target tests[0m
+[14.037s] Built target tests
+[14.074s] Invoked command in '/home/Platooning-F1Tenth/build/pure_pursuit' returned '0': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/pure_pursuit --target tests -- -j10 -l10
+[14.149s] Invoking command in '/home/Platooning-F1Tenth/build/pure_pursuit': /usr/bin/cmake --install /home/Platooning-F1Tenth/build/pure_pursuit
+[14.253s] -- Install configuration: ""
+[14.256s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/lib/pkgconfig/pure_pursuit.pc
+[14.269s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/cmake/pure_pursuitConfig.cmake
+[14.277s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/cmake/pure_pursuitConfig-version.cmake
+[14.285s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/package.xml
+[14.298s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/lib/pure_pursuit/pure_pursuit_angle.py
+[14.301s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/lib/pure_pursuit/pure_pursuit.py
+[14.308s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/lib/pure_pursuit/visualize_markers.py
+[14.314s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/lib/pure_pursuit/waypoint_logger_pure_pursuit.py
+[14.321s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/launch
+[14.326s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/launch/.pure_pursuit.launch.swp
+[14.367s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/launch/pure_pursuit_particle_filter.launch
+[14.370s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/launch/collect_waypoints.launch
+[14.371s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/launch/pure_pursuit.launch
+[14.404s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/maps
+[14.406s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/maps/levine.yaml
+[14.409s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/maps/track_2.pgm
+[14.411s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/maps/track_2.yaml
+[14.414s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/maps/levine.pgm
+[14.897s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/rviz_cfg
+[14.915s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/rviz_cfg/pure_pursuit.rviz
+[14.932s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/waypoints
+[14.941s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/waypoints/levine-waypoints.csv
+[14.949s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/waypoints/track_porto_26780.csv
+[14.989s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/waypoints/.waypoints.csv.swp
+[15.031s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/waypoints/racecar_tunnel_26520.csv
+[15.049s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/waypoints/levine-waypoints4.csv
+[15.107s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/waypoints/racecar_walker_28998.csv
+[15.139s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/waypoints/levine-waypoints3.csv
+[15.203s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/waypoints/levine-waypoints2.csv
+[15.263s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/waypoints/porto_waypoints.csv
+[15.282s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/waypoints/track_barca_47396.csv
+[15.292s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/waypoints/racecar_walker_29418.csv
+[15.312s] -- Installing: /home/Platooning-F1Tenth/install/pure_pursuit/share/pure_pursuit/waypoints/track_barca_4676.csv
+[15.886s] Invoked command in '/home/Platooning-F1Tenth/build/pure_pursuit' returned '0': /usr/bin/cmake --install /home/Platooning-F1Tenth/build/pure_pursuit

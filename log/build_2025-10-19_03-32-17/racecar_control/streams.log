@@ -1,0 +1,63 @@
+[0.194s] Invoking command in '/home/Platooning-F1Tenth/build/racecar_control': /usr/bin/cmake /home/Platooning-F1Tenth/src/simulator/racecar-simulator/racecar_control -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/racecar_control
+[13.453s] -- The C compiler identification is GNU 9.4.0
+[13.455s] -- The CXX compiler identification is GNU 9.4.0
+[13.458s] -- Check for working C compiler: /usr/bin/cc
+[13.459s] -- Check for working C compiler: /usr/bin/cc -- works
+[13.462s] -- Detecting C compiler ABI info
+[13.464s] -- Detecting C compiler ABI info - done
+[13.465s] -- Detecting C compile features
+[13.470s] -- Detecting C compile features - done
+[13.472s] -- Check for working CXX compiler: /usr/bin/c++
+[13.474s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[13.476s] -- Detecting CXX compiler ABI info
+[13.481s] -- Detecting CXX compiler ABI info - done
+[13.484s] -- Detecting CXX compile features
+[13.488s] -- Detecting CXX compile features - done
+[13.491s] -- Using CATKIN_DEVEL_PREFIX: /home/Platooning-F1Tenth/build/racecar_control/devel
+[13.497s] -- Using CMAKE_PREFIX_PATH: /opt/ros/noetic
+[13.500s] -- This workspace overlays: /opt/ros/noetic
+[13.503s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[13.507s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[13.509s] -- Using Debian Python package layout
+[13.511s] -- Found PY_em: /usr/lib/python3/dist-packages/em.py  
+[13.517s] -- Using empy: /usr/lib/python3/dist-packages/em.py
+[13.518s] -- Using CATKIN_ENABLE_TESTING: ON
+[13.520s] -- Call enable_testing()
+[13.522s] -- Using CATKIN_TEST_RESULTS_DIR: /home/Platooning-F1Tenth/build/racecar_control/test_results
+[13.529s] -- Forcing gtest/gmock from source, though one was otherwise available.
+[13.534s] -- Found gtest sources under '/usr/src/googletest': gtests will be built
+[13.535s] -- Found gmock sources under '/usr/src/googletest': gmock will be built
+[13.536s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[13.536s] -- Found Threads: TRUE  
+[13.537s] -- Using Python nosetests: /usr/bin/nosetests3
+[13.538s] -- catkin 0.8.12
+[13.541s] -- BUILD_SHARED_LIBS is on
+[13.543s] -- Configuring done
+[13.545s] -- Generating done
+[13.551s] -- Build files have been written to: /home/Platooning-F1Tenth/build/racecar_control
+[13.589s] Invoked command in '/home/Platooning-F1Tenth/build/racecar_control' returned '0': /usr/bin/cmake /home/Platooning-F1Tenth/src/simulator/racecar-simulator/racecar_control -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/racecar_control
+[13.594s] Invoking command in '/home/Platooning-F1Tenth/build/racecar_control': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/racecar_control -- -j10 -l10
+[13.668s] Invoked command in '/home/Platooning-F1Tenth/build/racecar_control' returned '0': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/racecar_control -- -j10 -l10
+[13.817s] Invoking command in '/home/Platooning-F1Tenth/build/racecar_control': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/racecar_control --target tests -- -j10 -l10
+[14.143s] [35m[1mScanning dependencies of target tests[0m
+[14.158s] Built target tests
+[14.204s] Invoked command in '/home/Platooning-F1Tenth/build/racecar_control' returned '0': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/racecar_control --target tests -- -j10 -l10
+[14.217s] Invoking command in '/home/Platooning-F1Tenth/build/racecar_control': /usr/bin/cmake --install /home/Platooning-F1Tenth/build/racecar_control
+[14.355s] -- Install configuration: ""
+[14.356s] -- Installing: /home/Platooning-F1Tenth/install/racecar_control/lib/pkgconfig/racecar_control.pc
+[14.358s] -- Installing: /home/Platooning-F1Tenth/install/racecar_control/share/racecar_control/cmake/racecar_controlConfig.cmake
+[14.363s] -- Installing: /home/Platooning-F1Tenth/install/racecar_control/share/racecar_control/cmake/racecar_controlConfig-version.cmake
+[14.364s] -- Installing: /home/Platooning-F1Tenth/install/racecar_control/share/racecar_control/package.xml
+[14.367s] -- Installing: /home/Platooning-F1Tenth/install/racecar_control/lib/racecar_control/keyboard_teleop.py
+[14.369s] -- Installing: /home/Platooning-F1Tenth/install/racecar_control/lib/racecar_control/servo_commands_gen.py
+[14.370s] -- Installing: /home/Platooning-F1Tenth/install/racecar_control/lib/racecar_control/servo_commands.py
+[14.378s] -- Installing: /home/Platooning-F1Tenth/install/racecar_control/share/racecar_control/config
+[14.381s] -- Installing: /home/Platooning-F1Tenth/install/racecar_control/share/racecar_control/config/racecar_control2.yaml
+[14.383s] -- Installing: /home/Platooning-F1Tenth/install/racecar_control/share/racecar_control/config/racecar_control3.yaml
+[14.388s] -- Installing: /home/Platooning-F1Tenth/install/racecar_control/share/racecar_control/config/racecar_control_gen.yaml
+[14.390s] -- Installing: /home/Platooning-F1Tenth/install/racecar_control/share/racecar_control/config/racecar_control.yaml
+[14.392s] -- Installing: /home/Platooning-F1Tenth/install/racecar_control/share/racecar_control/launch
+[14.393s] -- Installing: /home/Platooning-F1Tenth/install/racecar_control/share/racecar_control/launch/teleop.launch
+[14.396s] -- Installing: /home/Platooning-F1Tenth/install/racecar_control/share/racecar_control/launch/racecar_control.launch
+[14.399s] -- Installing: /home/Platooning-F1Tenth/install/racecar_control/share/racecar_control/launch/gazebo_sim_joy.launch
+[14.754s] Invoked command in '/home/Platooning-F1Tenth/build/racecar_control' returned '0': /usr/bin/cmake --install /home/Platooning-F1Tenth/build/racecar_control

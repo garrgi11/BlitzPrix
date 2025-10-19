@@ -1,0 +1,3 @@
+Invoking command in '/home/Platooning-F1Tenth/build/f110_rrt_star': /usr/bin/cmake /home/Platooning-F1Tenth/src/f110_rrt_star -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/f110_rrt_star
+Invoked command in '/home/Platooning-F1Tenth/build/f110_rrt_star' returned '0': /usr/bin/cmake /home/Platooning-F1Tenth/src/f110_rrt_star -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/f110_rrt_star
+Invoking command in '/home/Platooning-F1Tenth/build/f110_rrt_star': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/f110_rrt_star -- -j10 -l10

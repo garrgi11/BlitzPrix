@@ -1,0 +1,51 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║              DIGITALOCEAN DROPLET SCRIPTS - QUICK REFERENCE               ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+📍 LOCATION:
+  ~/Desktop/Platooning-F1Tenth/digitalocean/
+
+⚡ SETUP (ONE TIME):
+  1. export DIGITALOCEAN_TOKEN="dop_v1_xxxxx"
+  2. export DO_SSH_KEY_ID="12345678"
+  3. ./verify_setup.sh
+
+🚀 COMMON COMMANDS:
+  
+  Create standard droplet:
+    ./create_do_gpu.sh my-test s-2vcpu-4gb
+  
+  Create GPU droplet:
+    ./create_do_gpu.sh gpu-test g-8vcpu-48gb-nvidia-l40sx1-48gb
+  
+  Use API instead:
+    ./create_do_api.sh my-test s-4vcpu-8gb
+  
+  List all droplets:
+    ./show_droplet_info.sh
+  
+  View logs:
+    ls -lah logs/
+
+📋 POPULAR SIZES:
+  s-2vcpu-4gb                           → $24/mo (standard)
+  s-4vcpu-8gb                           → $48/mo (medium)
+  g-8vcpu-48gb-nvidia-l40sx1-48gb       → ~$2/hr (GPU)
+  g-32vcpu-128gb-nvidia-h100x1-80gb     → ~$4/hr (H100)
+
+🔗 AFTER CREATION:
+  ssh root@<droplet-ip>
+  cloud-init status
+  cat /home/demo/tests/demo.log
+
+🧹 CLEANUP:
+  doctl compute droplet delete <id>
+  doctl compute droplet delete --tag-name gpu-demo
+
+📚 DOCS:
+  QUICKSTART.md  → 5-minute guide
+  README.md      → Full documentation
+  SUMMARY.txt    → Project overview
+
+═══════════════════════════════════════════════════════════════════════════════
+

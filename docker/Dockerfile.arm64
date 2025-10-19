@@ -1,0 +1,79 @@
+FROM ubuntu:20.04
+ENV DEBIAN_FRONTEND=noninteractive 
+
+# Install VNC and desktop environment for GUI access
+RUN apt-get update && apt-get install -y \
+    xfce4 xfce4-goodies \
+    tightvncserver \
+    novnc \
+    websockify \
+    supervisor \
+    net-tools \
+    dirmngr \
+    gnupg2 \
+    lsb-release \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Setup ROS repository
+RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+RUN curl http://repo.ros2.org/repos.key | apt-key add -
+RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
+
+# Install ROS Noetic
+RUN apt-get update && apt-get install -y \
+    ros-noetic-desktop-full \
+    python3-rosdep \
+    python3-rosinstall \
+    python3-rosinstall-generator \
+    python3-wstool \
+    build-essential \
+    python3-pip \
+    nano \
+    python-is-python3 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Initialize rosdep
+RUN rosdep init && rosdep update
+
+# Install Python packages
+RUN pip install --upgrade pip && \
+    pip install imutils numpy scipy rdp do-mpc tensorflow==2.11 pathlib gdown
+
+# Download and install RL library
+WORKDIR /home
+RUN gdown https://drive.google.com/uc?id=152KL7JzDReYdg6quBznL9WtC0I5IvNx6 && \
+    apt-get update && apt-get install -y unzip && \
+    unzip rl_library.zip && \
+    cd rl_library && \
+    pip install -e . && \
+    cd ..
+
+# Clone and build the F1Tenth project
+RUN git clone https://github.com/pmusau17/Platooning-F1Tenth
+WORKDIR /home/Platooning-F1Tenth 
+
+RUN git pull && \
+    apt-get update && \
+    rosdep install --from-paths src --ignore-src -r -y --rosdistro noetic && \
+    /bin/bash -c "apt install -y python3-colcon-common-extensions ros-noetic-ackermann-msgs && \
+    source /opt/ros/noetic/setup.bash && colcon build"
+
+# Setup VNC
+RUN mkdir -p ~/.vnc && \
+    echo "password" | vncpasswd -f > ~/.vnc/passwd && \
+    chmod 600 ~/.vnc/passwd
+
+# Create startup script
+RUN echo '#!/bin/bash\n\
+export DISPLAY=:1\n\
+vncserver :1 -geometry 1920x1080 -depth 24 &\n\
+websockify --web=/usr/share/novnc 6080 localhost:5901 &\n\
+source /opt/ros/noetic/setup.bash\n\
+source /home/Platooning-F1Tenth/install/setup.bash\n\
+tail -f /dev/null' > /start.sh && chmod +x /start.sh
+
+EXPOSE 5901 6080
+
+CMD ["/start.sh"]
+

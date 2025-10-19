@@ -1,0 +1,254 @@
+[0.114s] Invoking command in '/home/Platooning-F1Tenth/build/race': /usr/bin/cmake /home/Platooning-F1Tenth/src/race -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/race
+[1.090s] -- The C compiler identification is GNU 9.4.0
+[1.584s] -- The CXX compiler identification is GNU 9.4.0
+[1.603s] -- Check for working C compiler: /usr/bin/cc
+[2.435s] -- Check for working C compiler: /usr/bin/cc -- works
+[2.437s] -- Detecting C compiler ABI info
+[3.164s] -- Detecting C compiler ABI info - done
+[3.188s] -- Detecting C compile features
+[3.190s] -- Detecting C compile features - done
+[3.200s] -- Check for working CXX compiler: /usr/bin/c++
+[3.893s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[3.901s] -- Detecting CXX compiler ABI info
+[4.647s] -- Detecting CXX compiler ABI info - done
+[4.674s] -- Detecting CXX compile features
+[4.677s] -- Detecting CXX compile features - done
+[4.705s] -- Using CATKIN_DEVEL_PREFIX: /home/Platooning-F1Tenth/build/race/devel
+[4.710s] -- Using CMAKE_PREFIX_PATH: /opt/ros/noetic
+[4.712s] -- This workspace overlays: /opt/ros/noetic
+[4.816s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[4.819s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[4.822s] -- Using Debian Python package layout
+[4.966s] -- Found PY_em: /usr/lib/python3/dist-packages/em.py  
+[4.967s] -- Using empy: /usr/lib/python3/dist-packages/em.py
+[5.614s] -- Using CATKIN_ENABLE_TESTING: ON
+[5.614s] -- Call enable_testing()
+[5.638s] -- Using CATKIN_TEST_RESULTS_DIR: /home/Platooning-F1Tenth/build/race/test_results
+[8.948s] -- Forcing gtest/gmock from source, though one was otherwise available.
+[8.957s] -- Found gtest sources under '/usr/src/googletest': gtests will be built
+[8.958s] -- Found gmock sources under '/usr/src/googletest': gmock will be built
+[9.193s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[9.199s] -- Found Threads: TRUE  
+[9.223s] -- Using Python nosetests: /usr/bin/nosetests3
+[9.519s] -- catkin 0.8.12
+[9.523s] -- BUILD_SHARED_LIBS is on
+[11.147s] WARNING: package 'gazebo_ros' is deprecated (This package has been deprecated as of January 2025 with Gazebo classic 11 reaching
+[11.149s]       end-of-life. Users are highly encouraged to migrate to the new Gazebo
+[11.150s]       using our migration guides (https://gazebosim.org/docs/latest/gazebo_classic_migration))
+[11.449s] -- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+[11.556s] WARNING: package 'gazebo_msgs' is deprecated (This package has been deprecated as of January 2025 with Gazebo classic 11 reaching
+[11.558s]       end-of-life. Users are highly encouraged to migrate to the new Gazebo
+[11.561s]       using our migration guides (https://gazebosim.org/docs/latest/gazebo_classic_migration))
+[12.241s] -- Checking for module 'eigen3'
+[12.401s] --   Found eigen3, version 3.3.7
+[12.862s] -- Found Eigen: /usr/include/eigen3 (Required is at least version "3.1") 
+[12.864s] -- Eigen found (include: /usr/include/eigen3, version: 3.3.7)
+[13.073s] -- Found Boost: /usr/include (found suitable version "1.71.0", minimum required is "1.55.0") found components: system filesystem date_time iostreams regex 
+[13.102s] -- Checking for module 'flann'
+[13.645s] --   Found flann, version 1.9.1
+[13.732s] -- Found FLANN: /usr/lib/x86_64-linux-gnu/libflann_cpp.so  
+[13.760s] -- The imported target "vtkParseOGLExt" references the file
+[13.763s]    "/usr/bin/vtkParseOGLExt-7.1"
+[13.765s] but this file does not exist.  Possible reasons include:
+[13.766s] * The file was deleted, renamed, or moved to another location.
+[13.769s] * An install or uninstall procedure did not complete successfully.
+[13.772s] * The installation package was faulty and contained
+[13.778s]    "/usr/lib/cmake/vtk-7.1/VTKTargets.cmake"
+[13.780s] but not all the files it references.
+[13.784s] 
+[13.788s] -- The imported target "vtkRenderingPythonTkWidgets" references the file
+[13.789s]    "/usr/lib/x86_64-linux-gnu/libvtkRenderingPythonTkWidgets.so"
+[13.793s] but this file does not exist.  Possible reasons include:
+[13.797s] * The file was deleted, renamed, or moved to another location.
+[13.805s] * An install or uninstall procedure did not complete successfully.
+[13.810s] * The installation package was faulty and contained
+[13.817s]    "/usr/lib/cmake/vtk-7.1/VTKTargets.cmake"
+[13.822s] but not all the files it references.
+[13.826s] 
+[13.828s] -- The imported target "vtk" references the file
+[13.831s]    "/usr/bin/vtk"
+[13.835s] but this file does not exist.  Possible reasons include:
+[13.838s] * The file was deleted, renamed, or moved to another location.
+[13.843s] * An install or uninstall procedure did not complete successfully.
+[13.848s] * The installation package was faulty and contained
+[13.856s]    "/usr/lib/cmake/vtk-7.1/VTKTargets.cmake"
+[13.858s] but not all the files it references.
+[13.863s] 
+[13.865s] -- The imported target "pvtk" references the file
+[13.866s]    "/usr/bin/pvtk"
+[13.869s] but this file does not exist.  Possible reasons include:
+[13.874s] * The file was deleted, renamed, or moved to another location.
+[13.875s] * An install or uninstall procedure did not complete successfully.
+[13.886s] * The installation package was faulty and contained
+[13.890s]    "/usr/lib/cmake/vtk-7.1/VTKTargets.cmake"
+[13.898s] but not all the files it references.
+[13.901s] 
+[13.927s] -- Checking for module 'libusb-1.0'
+[13.930s] --   Found libusb-1.0, version 1.0.23
+[14.097s] -- Found USB_10: /usr/lib/x86_64-linux-gnu/libusb-1.0.so  
+[14.491s] -- Found OpenNI: /usr/lib/libOpenNI.so  
+[14.493s] -- OpenNI found (include: /usr/include/ni, lib: /usr/lib/libOpenNI.so)
+[15.132s] -- Found OpenNI2: /usr/lib/libOpenNI2.so  
+[15.142s] -- OpenNI2 found (include: /usr/include/openni2, lib: /usr/lib/libOpenNI2.so)
+[15.151s] ** WARNING ** io features related to pcap will be disabled
+[15.155s] ** WARNING ** io features related to png will be disabled
+[15.161s] -- Found libusb-1.0: /usr/include  
+[15.166s] ** WARNING ** io features related to libusb-1.0 will be disabled
+[15.193s] -- OpenNI found (include: /usr/include/ni, lib: /usr/lib/libOpenNI.so)
+[15.249s] -- OpenNI2 found (include: /usr/include/openni2, lib: /usr/lib/libOpenNI2.so)
+[15.427s] -- Found Qhull: optimized;/usr/lib/x86_64-linux-gnu/libqhull.so;debug;/usr/lib/x86_64-linux-gnu/libqhull.so  
+[15.430s] -- QHULL found (include: /usr/include, lib: optimized;/usr/lib/x86_64-linux-gnu/libqhull.so;debug;/usr/lib/x86_64-linux-gnu/libqhull.so)
+[15.451s] -- OpenNI found (include: /usr/include/ni, lib: /usr/lib/libOpenNI.so)
+[15.463s] -- looking for PCL_COMMON
+[15.468s] -- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  
+[15.472s] -- looking for PCL_KDTREE
+[15.477s] -- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  
+[15.492s] -- looking for PCL_OCTREE
+[15.495s] -- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  
+[15.496s] -- looking for PCL_SEARCH
+[15.507s] -- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  
+[15.509s] -- looking for PCL_SAMPLE_CONSENSUS
+[15.515s] -- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  
+[15.519s] -- looking for PCL_FILTERS
+[15.522s] -- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  
+[15.530s] -- looking for PCL_2D
+[15.532s] -- Found PCL_2D: /usr/include/pcl-1.10  
+[15.542s] -- looking for PCL_GEOMETRY
+[15.549s] -- Found PCL_GEOMETRY: /usr/include/pcl-1.10  
+[15.550s] -- looking for PCL_IO
+[15.552s] -- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  
+[15.553s] -- looking for PCL_FEATURES
+[15.560s] -- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  
+[15.568s] -- looking for PCL_ML
+[15.574s] -- Found PCL_ML: /usr/lib/x86_64-linux-gnu/libpcl_ml.so  
+[15.578s] -- looking for PCL_SEGMENTATION
+[15.580s] -- Found PCL_SEGMENTATION: /usr/lib/x86_64-linux-gnu/libpcl_segmentation.so  
+[15.584s] -- looking for PCL_VISUALIZATION
+[15.588s] -- Found PCL_VISUALIZATION: /usr/lib/x86_64-linux-gnu/libpcl_visualization.so  
+[15.590s] -- looking for PCL_SURFACE
+[15.593s] -- Found PCL_SURFACE: /usr/lib/x86_64-linux-gnu/libpcl_surface.so  
+[15.602s] -- looking for PCL_REGISTRATION
+[15.605s] -- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  
+[15.619s] -- looking for PCL_KEYPOINTS
+[15.622s] -- Found PCL_KEYPOINTS: /usr/lib/x86_64-linux-gnu/libpcl_keypoints.so  
+[15.625s] -- looking for PCL_TRACKING
+[15.627s] -- Found PCL_TRACKING: /usr/lib/x86_64-linux-gnu/libpcl_tracking.so  
+[15.629s] -- looking for PCL_RECOGNITION
+[15.632s] -- Found PCL_RECOGNITION: /usr/lib/x86_64-linux-gnu/libpcl_recognition.so  
+[15.641s] -- looking for PCL_STEREO
+[15.645s] -- Found PCL_STEREO: /usr/lib/x86_64-linux-gnu/libpcl_stereo.so  
+[15.649s] -- looking for PCL_APPS
+[15.655s] -- Found PCL_APPS: /usr/lib/x86_64-linux-gnu/libpcl_apps.so  
+[15.658s] -- looking for PCL_IN_HAND_SCANNER
+[15.670s] -- Found PCL_IN_HAND_SCANNER: /usr/include/pcl-1.10  
+[15.678s] -- looking for PCL_POINT_CLOUD_EDITOR
+[15.695s] -- Found PCL_POINT_CLOUD_EDITOR: /usr/include/pcl-1.10  
+[15.701s] -- looking for PCL_OUTOFCORE
+[15.712s] -- Found PCL_OUTOFCORE: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so  
+[15.721s] -- looking for PCL_PEOPLE
+[15.728s] -- Found PCL_PEOPLE: /usr/lib/x86_64-linux-gnu/libpcl_people.so  
+[15.740s] -- Found PCL: pcl_common;pcl_kdtree;pcl_octree;pcl_search;pcl_sample_consensus;pcl_filters;pcl_io;pcl_features;pcl_ml;pcl_segmentation;pcl_visualization;pcl_surface;pcl_registration;pcl_keypoints;pcl_tracking;pcl_recognition;pcl_stereo;pcl_apps;pcl_outofcore;pcl_people;/usr/lib/x86_64-linux-gnu/libboost_system.so;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;/usr/lib/x86_64-linux-gnu/libboost_iostreams.so;/usr/lib/x86_64-linux-gnu/libboost_regex.so;optimized;/usr/lib/x86_64-linux-gnu/libqhull.so;debug;/usr/lib/x86_64-linux-gnu/libqhull.so;/usr/lib/libOpenNI.so;/usr/lib/libOpenNI2.so;vtkChartsCore;vtkCommonColor;vtkCommonCore;vtksys;vtkCommonDataModel;vtkCommonMath;vtkCommonMisc;vtkCommonSystem;vtkCommonTransforms;vtkCommonExecutionModel;vtkFiltersGeneral;vtkCommonComputationalGeometry;vtkFiltersCore;vtkInfovisCore;vtkFiltersExtraction;vtkFiltersStatistics;vtkImagingFourier;vtkImagingCore;vtkalglib;vtkRenderingContext2D;vtkRenderingCore;vtkFiltersGeometry;vtkFiltersSources;vtkRenderingFreeType;/usr/lib/x86_64-linux-gnu/libfreetype.so;/usr/lib/x86_64-linux-gnu/libz.so;vtkFiltersModeling;vtkImagingSources;vtkInteractionStyle;vtkInteractionWidgets;vtkFiltersHybrid;vtkImagingColor;vtkImagingGeneral;vtkImagingHybrid;vtkIOImage;vtkDICOMParser;vtkmetaio;/usr/lib/x86_64-linux-gnu/libjpeg.so;/usr/lib/x86_64-linux-gnu/libpng.so;/usr/lib/x86_64-linux-gnu/libtiff.so;vtkRenderingAnnotation;vtkRenderingVolume;vtkIOXML;vtkIOCore;vtkIOXMLParser;/usr/lib/x86_64-linux-gnu/libexpat.so;vtkIOGeometry;vtkIOLegacy;vtkIOPLY;vtkRenderingLOD;vtkViewsContext2D;vtkViewsCore;vtkRenderingContextOpenGL2;vtkRenderingOpenGL2;FLANN::FLANN  
+[16.103s] -- race: 10 messages, 0 services
+[17.472s] -- Configuring done
+[19.833s] -- Generating done
+[20.978s] -- Build files have been written to: /home/Platooning-F1Tenth/build/race
+[21.083s] Invoked command in '/home/Platooning-F1Tenth/build/race' returned '0': /usr/bin/cmake /home/Platooning-F1Tenth/src/race -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/Platooning-F1Tenth/install/race
+[21.096s] Invoking command in '/home/Platooning-F1Tenth/build/race': /usr/bin/cmake --build /home/Platooning-F1Tenth/build/race -- -j10 -l10
+[36.309s] [35m[1mScanning dependencies of target _race_generate_messages_check_deps_prediction[0m
+[36.311s] [35m[1mScanning dependencies of target laser_converter_node[0m
+[36.312s] [35m[1mScanning dependencies of target _race_generate_messages_check_deps_interval[0m
+[36.312s] [35m[1mScanning dependencies of target _race_generate_messages_check_deps_pid_input[0m
+[36.315s] [35m[1mScanning dependencies of target _race_generate_messages_check_deps_drive_param[0m
+[36.317s] [35m[1mScanning dependencies of target _race_generate_messages_check_deps_angle_msg[0m
+[36.320s] [35m[1mScanning dependencies of target _race_generate_messages_check_deps_reach_tube[0m
+[36.322s] [35m[1mScanning dependencies of target _race_generate_messages_check_deps_drive_values[0m
+[36.324s] [35m[1mScanning dependencies of target _race_generate_messages_check_deps_obstacle_list[0m
+[36.325s] [35m[1mScanning dependencies of target _race_generate_messages_check_deps_stamped_ttc[0m
+[36.326s] [  0%] Built target _race_generate_messages_check_deps_pid_input
+[36.328s] [  0%] Built target _race_generate_messages_check_deps_prediction
+[36.330s] [  0%] Built target _race_generate_messages_check_deps_drive_values
+[36.331s] [35m[1mScanning dependencies of target _race_generate_messages_check_deps_velocity_msg[0m
+[36.332s] [35m[1mScanning dependencies of target sensor_msgs_generate_messages_py[0m
+[36.333s] [35m[1mScanning dependencies of target sensor_msgs_generate_messages_nodejs[0m
+[36.334s] [  0%] Built target _race_generate_messages_check_deps_reach_tube
+[36.337s] [  0%] Built target _race_generate_messages_check_deps_interval
+[36.341s] [  0%] Built target _race_generate_messages_check_deps_stamped_ttc
+[36.342s] [  0%] Built target _race_generate_messages_check_deps_drive_param
+[36.344s] [  0%] Built target _race_generate_messages_check_deps_obstacle_list
+[36.346s] [  0%] Built target _race_generate_messages_check_deps_angle_msg
+[36.351s] [  0%] Built target sensor_msgs_generate_messages_py
+[36.353s] [  0%] Built target sensor_msgs_generate_messages_nodejs
+[36.356s] [35m[1mScanning dependencies of target sensor_msgs_generate_messages_eus[0m
+[36.362s] [35m[1mScanning dependencies of target sensor_msgs_generate_messages_cpp[0m
+[36.365s] [35m[1mScanning dependencies of target sensor_msgs_generate_messages_lisp[0m
+[36.367s] [  1%] [32mBuilding CXX object CMakeFiles/laser_converter_node.dir/src/laser_to_pointcloud.cpp.o[0m
+[36.368s] [  1%] Built target sensor_msgs_generate_messages_eus
+[36.369s] [  1%] Built target sensor_msgs_generate_messages_lisp
+[36.370s] [  1%] Built target sensor_msgs_generate_messages_cpp
+[36.372s] [  1%] Built target _race_generate_messages_check_deps_velocity_msg
+[36.373s] [35m[1mScanning dependencies of target race_generate_messages_py[0m
+[36.376s] [35m[1mScanning dependencies of target race_generate_messages_lisp[0m
+[36.376s] [35m[1mScanning dependencies of target race_generate_messages_nodejs[0m
+[36.377s] [35m[1mScanning dependencies of target race_generate_messages_cpp[0m
+[36.385s] [35m[1mScanning dependencies of target race_generate_messages_eus[0m
+[36.386s] [  3%] [34m[1mGenerating Lisp code from race/drive_param.msg[0m
+[36.387s] [  9%] [34m[1mGenerating Lisp code from race/drive_values.msg[0m
+[36.389s] [  9%] [34m[1mGenerating C++ code from race/angle_msg.msg[0m
+[36.389s] [  9%] [34m[1mGenerating Lisp code from race/velocity_msg.msg[0m
+[36.390s] [ 12%] [34m[1mGenerating Lisp code from race/angle_msg.msg[0m
+[36.392s] [ 12%] [34m[1mGenerating Python from MSG race/angle_msg[0m
+[36.393s] [ 16%] [34m[1mGenerating EusLisp code from race/angle_msg.msg[0m
+[36.394s] [ 16%] [34m[1mGenerating Lisp code from race/prediction.msg[0m
+[36.395s] [ 18%] [34m[1mGenerating Javascript code from race/angle_msg.msg[0m
+[36.397s] [ 20%] [34m[1mGenerating Lisp code from race/pid_input.msg[0m
+[36.399s] [ 22%] [34m[1mGenerating Python from MSG race/prediction[0m
+[36.400s] [ 24%] [34m[1mGenerating C++ code from race/prediction.msg[0m
+[36.401s] [ 25%] [34m[1mGenerating Javascript code from race/prediction.msg[0m
+[36.402s] [ 27%] [34m[1mGenerating Javascript code from race/velocity_msg.msg[0m
+[36.403s] [ 33%] [34m[1mGenerating Python from MSG race/velocity_msg[0m
+[36.404s] [ 33%] [34m[1mGenerating EusLisp code from race/prediction.msg[0m
+[36.405s] [ 33%] [34m[1mGenerating Javascript code from race/drive_param.msg[0m
+[36.407s] [ 35%] [34m[1mGenerating C++ code from race/velocity_msg.msg[0m
+[36.409s] [ 37%] [34m[1mGenerating Lisp code from race/stamped_ttc.msg[0m
+[36.413s] [ 38%] [34m[1mGenerating EusLisp code from race/velocity_msg.msg[0m
+[36.415s] [ 40%] [34m[1mGenerating Lisp code from race/interval.msg[0m
+[36.417s] [ 42%] [34m[1mGenerating EusLisp code from race/drive_param.msg[0m
+[36.419s] [ 44%] [34m[1mGenerating C++ code from race/drive_param.msg[0m
+[36.425s] [ 46%] [34m[1mGenerating Javascript code from race/drive_values.msg[0m
+[36.426s] [ 48%] [34m[1mGenerating C++ code from race/drive_values.msg[0m
+[36.427s] [ 50%] [34m[1mGenerating EusLisp code from race/drive_values.msg[0m
+[36.429s] [ 51%] [34m[1mGenerating EusLisp code from race/pid_input.msg[0m
+[36.431s] [ 53%] [34m[1mGenerating Lisp code from race/obstacle_list.msg[0m
+[36.431s] [ 55%] [34m[1mGenerating C++ code from race/pid_input.msg[0m
+[36.432s] [ 57%] [34m[1mGenerating Javascript code from race/pid_input.msg[0m
+[36.433s] [ 59%] [34m[1mGenerating Python from MSG race/drive_param[0m
+[36.434s] [ 61%] [34m[1mGenerating Lisp code from race/reach_tube.msg[0m
+[36.434s] [ 62%] [34m[1mGenerating C++ code from race/stamped_ttc.msg[0m
+[36.434s] [ 66%] [34m[1mGenerating Python from MSG race/drive_values[0m
+[36.435s] [ 66%] [34m[1mGenerating EusLisp code from race/stamped_ttc.msg[0m
+[36.435s] [ 68%] [34m[1mGenerating Javascript code from race/stamped_ttc.msg[0m
+[36.436s] [ 70%] [34m[1mGenerating Javascript code from race/interval.msg[0m
+[36.436s] [ 72%] [34m[1mGenerating C++ code from race/interval.msg[0m
+[36.437s] [ 74%] [34m[1mGenerating Python from MSG race/pid_input[0m
+[36.437s] [ 75%] [34m[1mGenerating Javascript code from race/obstacle_list.msg[0m
+[36.438s] [ 75%] Built target race_generate_messages_lisp
+[36.439s] [ 77%] [34m[1mGenerating EusLisp code from race/interval.msg[0m
+[36.440s] [ 79%] [34m[1mGenerating Python from MSG race/stamped_ttc[0m
+[36.440s] [ 81%] [34m[1mGenerating C++ code from race/obstacle_list.msg[0m
+[36.440s] [ 83%] [34m[1mGenerating Javascript code from race/reach_tube.msg[0m
+[36.441s] [ 87%] [34m[1mGenerating Python from MSG race/obstacle_list[0m
+[36.441s] [ 87%] [34m[1mGenerating Python from MSG race/interval[0m
+[36.442s] [ 90%] [34m[1mGenerating EusLisp code from race/obstacle_list.msg[0m
+[36.442s] [ 90%] [34m[1mGenerating C++ code from race/reach_tube.msg[0m
+[36.443s] [ 92%] [34m[1mGenerating EusLisp code from race/reach_tube.msg[0m
+[36.443s] [ 94%] [34m[1mGenerating EusLisp manifest code for race[0m
+[36.443s] [ 96%] [34m[1mGenerating Python from MSG race/reach_tube[0m
+[36.445s] [ 96%] Built target race_generate_messages_nodejs
+[36.447s] [ 96%] Built target race_generate_messages_cpp
+[36.448s] [ 98%] [34m[1mGenerating Python msg __init__.py for race[0m
+[36.448s] [ 98%] Built target race_generate_messages_py
+[36.449s] [ 98%] Built target race_generate_messages_eus
+[36.449s] [35m[1mScanning dependencies of target race_generate_messages[0m
+[36.449s] [ 98%] Built target race_generate_messages
+[44.313s] [100%] [32m[1mLinking CXX executable devel/lib/race/laser_converter_node[0m
+[44.973s] [100%] Built target laser_converter_node
