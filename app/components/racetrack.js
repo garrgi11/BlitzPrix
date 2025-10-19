@@ -5,12 +5,19 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 const F1RaceSimulation = () => {
   const containerRef = useRef(null);
+  const [isRainy, setIsRainy] = React.useState(false);
+  const sceneRef = useRef(null);
+  const cloudsRef = useRef(null);
+  const rainRef = useRef(null);
+  const updateWeatherRef = useRef(null);
+  const [terminalLines, setTerminalLines] = React.useState([]);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
     // Scene setup
     const scene = new THREE.Scene();
+    sceneRef.current = scene;
     
     // Camera setup - perspective camera with nice viewing angle
     const camera = new THREE.PerspectiveCamera(
@@ -71,14 +78,44 @@ const F1RaceSimulation = () => {
     };
 
     // Add multiple clouds scattered across the sky
+    const clouds = [];
     for (let i = 0; i < 20; i++) {
       const cloud = createCloud(
         Math.random() * 300 - 150,
         20 + Math.random() * 15,
         Math.random() * 300 - 150
       );
+      clouds.push(cloud);
       scene.add(cloud);
     }
+    cloudsRef.current = clouds;
+
+    // Create rain particle system
+    const createRain = () => {
+      const rainCount = 15000;
+      const rainGeometry = new THREE.BufferGeometry();
+      const rainPositions = new Float32Array(rainCount * 3);
+      const rainVelocities = new Float32Array(rainCount);
+      
+      for (let i = 0; i < rainCount; i++) {
+        rainPositions[i * 3] = Math.random() * 400 - 200;
+        rainPositions[i * 3 + 1] = Math.random() * 100;
+        rainPositions[i * 3 + 2] = Math.random() * 400 - 200;
+        rainVelocities[i] = 0.5 + Math.random() * 0.5;
+      }
+      
+      rainGeometry.setAttribute('position', new THREE.BufferAttribute(rainPositions, 3));
+      rainGeometry.userData.velocities = rainVelocities;
+      
+      const rainMaterial = new THREE.PointsMaterial({
+        color: 0xaaaaaa,
+        size: 0.2,
+        transparent: true,
+        opacity: 0.6
+      });
+      
+      return new THREE.Points(rainGeometry, rainMaterial);
+    };
 
     // Add ground (grass-like surface) - much larger for COTA track
     const groundGeometry = new THREE.PlaneGeometry(500, 500);
@@ -108,29 +145,72 @@ const F1RaceSimulation = () => {
     const createRacetrack = () => {
       const trackGroup = new THREE.Group();
       
-      // COTA-inspired track control points (scaled up for realistic F1 circuit)
+      // EXACT COTA (Circuit of the Americas) track layout based on official map
       const trackPoints = [
-        new THREE.Vector3(0, 0, 0),           // Start/Finish straight
-        new THREE.Vector3(0, 0, 30),          // Approach Turn 1
-        new THREE.Vector3(-15, 0, 45),        // Turn 1 (uphill left)
-        new THREE.Vector3(-25, 0, 50),        // Turn 2
-        new THREE.Vector3(-30, 0, 60),        // Turn 3-5 esses
-        new THREE.Vector3(-25, 0, 70),        
-        new THREE.Vector3(-35, 0, 85),        // Turn 6
-        new THREE.Vector3(-40, 0, 100),       // Back straight
-        new THREE.Vector3(-35, 0, 115),       
-        new THREE.Vector3(-20, 0, 125),       // Turn 11
-        new THREE.Vector3(0, 0, 130),         // Turn 12 (hairpin)
-        new THREE.Vector3(20, 0, 125),        
-        new THREE.Vector3(35, 0, 115),        // Turn 15
-        new THREE.Vector3(40, 0, 100),        
-        new THREE.Vector3(35, 0, 80),         // Stadium section
-        new THREE.Vector3(25, 0, 70),         
-        new THREE.Vector3(20, 0, 60),         
-        new THREE.Vector3(25, 0, 50),         
-        new THREE.Vector3(30, 0, 40),         // Turn 19
-        new THREE.Vector3(25, 0, 25),         // Turn 20
-        new THREE.Vector3(10, 0, 10),         // Final corner
+        // START/FINISH STRAIGHT (bottom left going up)
+        new THREE.Vector3(-80, 0, -90),
+        new THREE.Vector3(-75, 0, -70),
+        new THREE.Vector3(-70, 0, -50),
+        new THREE.Vector3(-65, 0, -30),
+        new THREE.Vector3(-60, 0, -10),
+        
+        // TURN 1 - Dramatic uphill left-hander (bottom center)
+        new THREE.Vector3(-55, 0, 10),
+        new THREE.Vector3(-45, 0, 25),
+        new THREE.Vector3(-30, 0, 35),
+        new THREE.Vector3(-15, 0, 40),
+        
+        // TURN 2 - Apex of the big left (SECTOR 1 - RED)
+        new THREE.Vector3(0, 0, 42),
+        
+        // TURNS 3-6 - The Esses going up the left side
+        new THREE.Vector3(10, 0, 45),         // Turn 3 - right
+        new THREE.Vector3(15, 0, 55),         // Turn 4 - left
+        new THREE.Vector3(12, 0, 70),         // Turn 5 - right
+        new THREE.Vector3(8, 0, 85),          // Turn 6 - left
+        
+        // TURNS 7-9 - Flowing right side (SECTOR 2 - BLUE)
+        new THREE.Vector3(10, 0, 100),        // Turn 7
+        new THREE.Vector3(20, 0, 112),        // Turn 8
+        new THREE.Vector3(35, 0, 120),        // Turn 9
+        
+        // TURN 10 - Right hander
+        new THREE.Vector3(50, 0, 125),
+        
+        // TURN 11 - Fast right at far right
+        new THREE.Vector3(70, 0, 128),
+        new THREE.Vector3(85, 0, 130),
+        
+        // BACK STRAIGHT and TURN 12 area (top of circuit)
+        new THREE.Vector3(100, 0, 128),
+        new THREE.Vector3(110, 0, 122),
+        new THREE.Vector3(115, 0, 110),       // Turn 12 - hairpin
+        new THREE.Vector3(112, 0, 95),
+        
+        // TURNS 13-14 - Coming down
+        new THREE.Vector3(105, 0, 80),        // Turn 13
+        new THREE.Vector3(95, 0, 70),         // Turn 14
+        
+        // TURN 15 - Sweeping left (SECTOR 3 - YELLOW)
+        new THREE.Vector3(82, 0, 60),
+        new THREE.Vector3(68, 0, 52),
+        
+        // TURNS 16-18 - STADIUM SECTION (middle-left)
+        new THREE.Vector3(55, 0, 48),         // Turn 16 - left
+        new THREE.Vector3(45, 0, 42),         // Turn 17 - left hairpin
+        new THREE.Vector3(38, 0, 30),         // Turn 18 - right
+        new THREE.Vector3(35, 0, 15),
+        
+        // TURN 19 - Left hander (bottom middle)
+        new THREE.Vector3(30, 0, 0),
+        new THREE.Vector3(20, 0, -15),
+        
+        // TURN 20 - Final right hander before start/finish
+        new THREE.Vector3(5, 0, -30),
+        new THREE.Vector3(-10, 0, -45),
+        new THREE.Vector3(-30, 0, -60),
+        new THREE.Vector3(-50, 0, -75),
+        new THREE.Vector3(-65, 0, -85),       // Back to start
       ];
 
       // Create smooth curve from points
@@ -185,7 +265,7 @@ const F1RaceSimulation = () => {
       trackGeometry.computeVertexNormals();
       
       const trackMaterial = new THREE.MeshStandardMaterial({ 
-        color: 0x2a2a2a,
+        color: 0x3d3d3d, // Brighter gray
         roughness: 0.9,
         side: THREE.DoubleSide
       });
@@ -193,7 +273,7 @@ const F1RaceSimulation = () => {
       track.castShadow = true;
       track.receiveShadow = true;
       trackGroup.add(track);
-
+      
       // Add red and white striped curbs along track edges
       const curbWidth = 0.8;
       const stripeLength = 1.5; // Length of each red or white stripe
@@ -265,6 +345,108 @@ const F1RaceSimulation = () => {
       trackGroup.add(leftCurb);
       trackGroup.add(rightCurb);
       
+      // === ADD GRANDSTANDS / SEATING ARENAS ===
+      const createGrandstand = (position, rotation, tiers = 8, width = 30) => {
+        const grandstandGroup = new THREE.Group();
+        
+        // Grandstand structure materials
+        const seatMaterial = new THREE.MeshStandardMaterial({ 
+          color: 0xdd2222, // Red seats
+          roughness: 0.8
+        });
+        const structureMaterial = new THREE.MeshStandardMaterial({ 
+          color: 0x505050, // Gray structure
+          roughness: 0.7
+        });
+        const concreteMaterial = new THREE.MeshStandardMaterial({ 
+          color: 0x666666, // Concrete
+          roughness: 0.9
+        });
+        const roofMaterial = new THREE.MeshStandardMaterial({ 
+          color: 0x1a1a1a, // Dark roof
+          roughness: 0.6
+        });
+        
+        // Simple tiered seating - like stadium stairs going up and back
+        const tierHeight = 1.0;  // Each step up
+        const tierDepth = 2.0;   // Each step back
+        const seatHeight = 0.4;
+        
+        // Foundation
+        const foundationHeight = 1.5;
+        const foundationGeometry = new THREE.BoxGeometry(width, foundationHeight, tiers * tierDepth + 2);
+        const foundation = new THREE.Mesh(foundationGeometry, concreteMaterial);
+        foundation.position.y = foundationHeight / 2;
+        foundation.position.z = (tiers * tierDepth) / 2;
+        foundation.receiveShadow = true;
+        grandstandGroup.add(foundation);
+        
+        // Create each tier as a step
+        for (let tier = 0; tier < tiers; tier++) {
+          // Riser (vertical part of the step) - gray concrete
+          const riserHeight = tierHeight;
+          const riserGeometry = new THREE.BoxGeometry(width, riserHeight, 0.3);
+          const riser = new THREE.Mesh(riserGeometry, concreteMaterial);
+          riser.position.y = foundationHeight + tier * tierHeight + riserHeight / 2;
+          riser.position.z = tier * tierDepth;
+          riser.castShadow = true;
+          grandstandGroup.add(riser);
+          
+          // Tread (horizontal part of the step) - gray concrete floor
+          const treadGeometry = new THREE.BoxGeometry(width, 0.2, tierDepth);
+          const tread = new THREE.Mesh(treadGeometry, concreteMaterial);
+          tread.position.y = foundationHeight + (tier + 1) * tierHeight;
+          tread.position.z = tier * tierDepth + tierDepth / 2;
+          tread.receiveShadow = true;
+          grandstandGroup.add(tread);
+          
+          // Seats on the tread - red seats
+          const seatGeometry = new THREE.BoxGeometry(width - 1, seatHeight, tierDepth * 0.4);
+          const seats = new THREE.Mesh(seatGeometry, seatMaterial);
+          seats.position.y = foundationHeight + (tier + 1) * tierHeight + seatHeight / 2;
+          seats.position.z = tier * tierDepth + tierDepth * 0.7; // Toward back of tread
+          seats.castShadow = true;
+          grandstandGroup.add(seats);
+        }
+        
+        // Simple support pillars at front
+        const pillarHeight = foundationHeight + tiers * tierHeight;
+        const pillarGeometry = new THREE.CylinderGeometry(0.6, 0.8, pillarHeight, 8);
+        for (let i = -1; i <= 1; i++) {
+          const pillar = new THREE.Mesh(pillarGeometry, structureMaterial);
+          pillar.position.x = i * width / 3;
+          pillar.position.y = pillarHeight / 2;
+          pillar.position.z = -1.5;
+          pillar.castShadow = true;
+          grandstandGroup.add(pillar);
+        }
+        
+        // Roof
+        const roofGeometry = new THREE.BoxGeometry(width + 4, 0.3, tiers * tierDepth + 3);
+        const roof = new THREE.Mesh(roofGeometry, roofMaterial);
+        roof.position.y = foundationHeight + tiers * tierHeight + 1.5;
+        roof.position.z = (tiers * tierDepth) / 2;
+        roof.castShadow = true;
+        grandstandGroup.add(roof);
+        
+        // Position and rotate the entire grandstand
+        grandstandGroup.position.copy(position);
+        grandstandGroup.rotation.y = rotation;
+        
+        return grandstandGroup;
+      };
+      
+      // Place ONE test grandstand - properly oriented
+      
+      // Single grandstand at Start/Finish for testing
+      const testGrandstand = createGrandstand(
+        new THREE.Vector3(-120, 0, -40),
+        0, // No rotation - facing +Z direction
+        8,
+        35
+      );
+      trackGroup.add(testGrandstand);
+      
       // Store track curve for car path
       trackGroup.userData.trackCurve = trackCurve;
       trackGroup.userData.trackWidth = trackWidth;
@@ -276,73 +458,349 @@ const F1RaceSimulation = () => {
     const trackCurve = racetrack.userData.trackCurve;
     scene.add(racetrack);
 
-    // Load the realistic Ferrari F1 model from Sketchfab
-    let f1Car = null;
-    let carWheels = []; // Store wheel references for rotation
-    const loader = new GLTFLoader();
+    // Add "COTA" and "CIRCUIT OF THE AMERICAS" text as flat decals on ground
     
-    loader.load(
-      '/scene.gltf', // Load the original gltf file (it references scene.bin and textures)
-      (gltf) => {
-        f1Car = gltf.scene;
+    // Create canvas for text with high resolution
+    const createTextTexture = (text, fontSize, color) => {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      
+      // Set HIGH resolution canvas size for crisp text - larger for long text
+      canvas.width = text.length > 10 ? 8192 : 4096;
+      canvas.height = 1024;
+      
+      // Enable better text rendering
+      context.imageSmoothingEnabled = true;
+      context.imageSmoothingQuality = 'high';
+      
+      // Clear canvas
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw text with extra bold font and stroke for clarity
+      const scaledFontSize = fontSize * 2; // Doubled size for higher res
+      context.font = `900 ${scaledFontSize}px Arial Black, Arial`; // 900 = extra bold weight
+      context.fillStyle = color;
+      context.strokeStyle = color;
+      context.lineWidth = 4;
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+      
+      // Measure text to ensure it fits
+      const metrics = context.measureText(text);
+      const textWidth = metrics.width;
+      
+      // If text is too wide, scale it down
+      if (textWidth > canvas.width * 0.9) {
+        const scale = (canvas.width * 0.9) / textWidth;
+        context.font = `900 ${scaledFontSize * scale}px Arial Black, Arial`;
+      }
+      
+      // Draw stroke first for bold effect
+      context.strokeText(text, canvas.width / 2, canvas.height / 2);
+      // Then fill
+      context.fillText(text, canvas.width / 2, canvas.height / 2);
+      
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.anisotropy = 16; // Maximum anisotropic filtering for sharp text at angles
+      texture.minFilter = THREE.LinearFilter;
+      texture.magFilter = THREE.LinearFilter;
+      
+      return texture;
+    };
+    
+    // Create COTA Banner/Poster structure in the infield
+    const createBanner = (x, z, rotationY = 0) => {
+      const bannerGroup = new THREE.Group();
+      
+      // Support poles (left and right) - metallic silver
+      const poleGeometry = new THREE.CylinderGeometry(0.4, 0.4, 20, 8);
+      const poleMaterial = new THREE.MeshStandardMaterial({ 
+        color: 0xcccccc,
+        metalness: 0.8,
+        roughness: 0.2
+      });
+      
+      const leftPole = new THREE.Mesh(poleGeometry, poleMaterial);
+      leftPole.position.set(-20, 10, 0);
+      leftPole.castShadow = true;
+      bannerGroup.add(leftPole);
+      
+      const rightPole = new THREE.Mesh(poleGeometry, poleMaterial);
+      rightPole.position.set(20, 10, 0);
+      rightPole.castShadow = true;
+      bannerGroup.add(rightPole);
+      
+      // Decorative pole caps
+      const capGeometry = new THREE.SphereGeometry(0.6, 16, 16);
+      const capMaterial = new THREE.MeshStandardMaterial({ 
+        color: 0xffaa00,
+        metalness: 0.9,
+        roughness: 0.1,
+        emissive: 0xffaa00,
+        emissiveIntensity: 0.3
+      });
+      
+      const leftCap = new THREE.Mesh(capGeometry, capMaterial);
+      leftCap.position.set(-20, 20.5, 0);
+      bannerGroup.add(leftCap);
+      
+      const rightCap = new THREE.Mesh(capGeometry, capMaterial);
+      rightCap.position.set(20, 20.5, 0);
+      bannerGroup.add(rightCap);
+      
+      // Banner frame - glossy black
+      const frameGeometry = new THREE.BoxGeometry(42, 16, 0.8);
+      const frameMaterial = new THREE.MeshStandardMaterial({ 
+        color: 0x111111,
+    metalness: 0.7,
+        roughness: 0.3
+      });
+      const frame = new THREE.Mesh(frameGeometry, frameMaterial);
+      frame.position.set(0, 10, 0);
+      frame.castShadow = true;
+      bannerGroup.add(frame);
+      
+      // Red/burgundy banner background (like real COTA) - FRONT SIDE
+      const bannerBgGeometry = new THREE.PlaneGeometry(40, 14);
+      const bannerBgMaterial = new THREE.MeshStandardMaterial({ 
+        color: 0x8b1538, // Deep red/burgundy
+        roughness: 0.5,
+        metalness: 0.1
+      });
+      const bannerBgFront = new THREE.Mesh(bannerBgGeometry, bannerBgMaterial);
+      bannerBgFront.position.set(0, 10, 0.45);
+      bannerGroup.add(bannerBgFront);
+      
+      // Red/burgundy banner background - BACK SIDE
+      const bannerBgBack = new THREE.Mesh(bannerBgGeometry, bannerBgMaterial.clone());
+      bannerBgBack.position.set(0, 10, -0.45);
+      bannerBgBack.rotation.y = Math.PI;
+      bannerGroup.add(bannerBgBack);
+      
+      // Decorative horizontal stripes (top)
+      const stripeGeometry = new THREE.PlaneGeometry(40, 0.5);
+      const stripeMaterial = new THREE.MeshStandardMaterial({ 
+        color: 0x0066cc,
+    roughness: 0.3,
+        metalness: 0.4
+      });
+      
+      for (let i = 0; i < 3; i++) {
+        const stripeFront = new THREE.Mesh(stripeGeometry, stripeMaterial);
+        stripeFront.position.set(0, 16.5 - i * 0.7, 0.46);
+        bannerGroup.add(stripeFront);
         
-        // FIX 1: Scale the car larger to match track
-        f1Car.scale.set(2.5, 2.5, 2.5);
+        const stripeBack = new THREE.Mesh(stripeGeometry, stripeMaterial.clone());
+        stripeBack.position.set(0, 16.5 - i * 0.7, -0.46);
+        stripeBack.rotation.y = Math.PI;
+        bannerGroup.add(stripeBack);
+      }
+      
+      // COTA text on banner - FRONT SIDE (light blue/white like real COTA)
+      const cotaTexture = createTextTexture('CIRCUIT OF THE', 300, '#c0d9ff');
+      const cotaGeometry = new THREE.PlaneGeometry(35, 4);
+      const cotaMaterial = new THREE.MeshStandardMaterial({ 
+        map: cotaTexture,
+        transparent: true,
+        roughness: 0.2,
+        emissive: 0xffffff,
+        emissiveIntensity: 0.1
+      });
+      const cotaPlaneFront = new THREE.Mesh(cotaGeometry, cotaMaterial);
+      cotaPlaneFront.position.set(0, 13, 0.5);
+      bannerGroup.add(cotaPlaneFront);
+      
+      // COTA text on banner - BACK SIDE
+      const cotaPlaneBack = new THREE.Mesh(cotaGeometry, cotaMaterial.clone());
+      cotaPlaneBack.position.set(0, 13, -0.5);
+      cotaPlaneBack.rotation.y = Math.PI;
+      bannerGroup.add(cotaPlaneBack);
+      
+      // "AMERICAS" text on banner - FRONT SIDE
+      const subtitleTexture = createTextTexture('AMERICAS', 400, '#c0d9ff');
+      const subtitleGeometry = new THREE.PlaneGeometry(35, 7);
+      const subtitleMaterial = new THREE.MeshStandardMaterial({ 
+        map: subtitleTexture,
+        transparent: true,
+        roughness: 0.2,
+        emissive: 0xffffff,
+        emissiveIntensity: 0.1
+      });
+      const subtitlePlaneFront = new THREE.Mesh(subtitleGeometry, subtitleMaterial);
+      subtitlePlaneFront.position.set(0, 9, 0.5);
+      bannerGroup.add(subtitlePlaneFront);
+      
+      // "AMERICAS" text on banner - BACK SIDE
+      const subtitlePlaneBack = new THREE.Mesh(subtitleGeometry, subtitleMaterial.clone());
+      subtitlePlaneBack.position.set(0, 9, -0.5);
+      subtitlePlaneBack.rotation.y = Math.PI;
+      bannerGroup.add(subtitlePlaneBack);
+      
+      // Load and add the official F1 logo image
+      const textureLoader = new THREE.TextureLoader();
+      textureLoader.load('/f1_movie_logo.png', (f1LogoTexture) => {
+        f1LogoTexture.anisotropy = 16;
         
-        // FIX 2: Raise the car above ground to prevent clipping
-        f1Car.position.y = 0.8;
-        
-        // FIX 3: No initial rotation - we'll handle direction in animation
-        f1Car.rotation.y = 0;
-        
-        // Calculate bounding box to check car dimensions
-        const box = new THREE.Box3().setFromObject(f1Car);
-        const size = box.getSize(new THREE.Vector3());
-        console.log('Car dimensions:', size);
-        
-        // Find and store wheel references for rotation
-        f1Car.traverse((child) => {
-          if (child.isMesh) {
-            child.castShadow = true;
-            child.receiveShadow = true;
-            
-            // Identify wheels by name (common naming conventions)
-            const name = child.name.toLowerCase();
-            if (name.includes('wheel') || name.includes('tire') || name.includes('rim')) {
-              carWheels.push(child);
-              console.log('Found wheel:', child.name);
-            }
-            
-            // FIX 4: Enhance materials for better clarity (reduce blur)
-            if (child.material) {
-              // Increase sharpness and quality
-              child.material.envMapIntensity = 2.0;
-              child.material.roughness = Math.min(child.material.roughness, 0.3);
-              child.material.metalness = Math.max(child.material.metalness, 0.8);
-              child.material.needsUpdate = true;
-              
-              // Enable anisotropic filtering for textures (reduces blur)
-              if (child.material.map) {
-                child.material.map.anisotropy = renderer.capabilities.getMaxAnisotropy();
-                child.material.map.needsUpdate = true;
-              }
-            }
-          }
+        const f1LogoGeometry = new THREE.PlaneGeometry(12, 4);
+        const f1LogoMaterial = new THREE.MeshStandardMaterial({ 
+          map: f1LogoTexture,
+          transparent: true,
+          roughness: 0.3,
+          emissive: 0xffffff,
+          emissiveIntensity: 0.15
         });
         
-        scene.add(f1Car);
-        console.log('Ferrari F1 model loaded successfully!');
-        console.log('Found', carWheels.length, 'wheels for rotation');
+        // F1 Logo - FRONT SIDE
+        const f1LogoFront = new THREE.Mesh(f1LogoGeometry, f1LogoMaterial);
+        f1LogoFront.position.set(0, 5, 0.52);
+        bannerGroup.add(f1LogoFront);
+        
+        // F1 Logo - BACK SIDE
+        const f1LogoBack = new THREE.Mesh(f1LogoGeometry, f1LogoMaterial.clone());
+        f1LogoBack.position.set(0, 5, -0.52);
+        f1LogoBack.rotation.y = Math.PI;
+        bannerGroup.add(f1LogoBack);
+        
+        console.log('F1 logo loaded on banner!');
+      }, undefined, (error) => {
+        console.error('Error loading F1 logo:', error);
+      });
+      
+      // Add decorative lights around the frame
+      const lightGeometry = new THREE.SphereGeometry(0.3, 8, 8);
+      const lightMaterial = new THREE.MeshStandardMaterial({ 
+        color: 0xffff00,
+        emissive: 0xffff00,
+        emissiveIntensity: 0.8
+      });
+      
+      for (let i = -19; i <= 19; i += 4) {
+        // Top lights
+        const topLight = new THREE.Mesh(lightGeometry, lightMaterial);
+        topLight.position.set(i, 18.2, 0);
+        bannerGroup.add(topLight);
+        
+        // Bottom lights
+        const bottomLight = new THREE.Mesh(lightGeometry, lightMaterial);
+        bottomLight.position.set(i, 1.8, 0);
+        bannerGroup.add(bottomLight);
+      }
+      
+      // Position the banner group
+      bannerGroup.position.set(x, 0, z);
+      bannerGroup.rotation.y = rotationY;
+      
+      return bannerGroup;
+    };
+    
+    // Add banner in the center of the infield
+    const banner1 = createBanner(-30, -15, Math.PI / 4); // Angled for better visibility
+    scene.add(banner1);
+    
+    console.log('Track banner added!');
+
+    // Load the realistic Ferrari F1 models - 3 cars with different colors
+    let cars = []; // Array to store all 3 cars
+    const carColors = [
+      { name: 'Black', color: 0x1a1a1a, startPosition: 0.0 },      // Original car
+      { name: 'Red', color: 0xff0000, startPosition: 0.04 },        // Red car closer ahead
+      { name: 'Blue', color: 0x00aaff, startPosition: 0.08 }        // Blue car just ahead of red
+    ];
+    
+    const loader = new GLTFLoader();
+    
+    // Load the model once and clone it for each car
+    loader.load(
+      '/scene.gltf',
+      (gltf) => {
+        // Create 3 cars with different colors
+        carColors.forEach((carConfig, index) => {
+          const carClone = gltf.scene.clone();
+          
+          // Scale and position
+          carClone.scale.set(2.5, 2.5, 2.5);
+          carClone.position.y = 0.8;
+          carClone.rotation.y = 0;
+          
+          // Store wheels for this car
+          const carWheels = [];
+          
+          // Traverse and modify materials
+          carClone.traverse((child) => {
+            if (child.isMesh) {
+              child.castShadow = true;
+              child.receiveShadow = true;
+              
+              // Identify wheels
+              const name = child.name.toLowerCase();
+              if (name.includes('wheel') || name.includes('tire') || name.includes('rim')) {
+                carWheels.push(child);
+              }
+              
+              // Clone material and change color for car body
+              if (child.material) {
+                child.material = child.material.clone();
+                
+                // Change car body color (not wheels/tires/brakes)
+                if (!name.includes('wheel') && !name.includes('tire') && 
+                    !name.includes('rim') && !name.includes('brake') &&
+                    !name.includes('caliper') && !name.includes('disc')) {
+                  
+                  // Change base color while preserving textures
+                  if (child.material.color) {
+                    const originalColor = child.material.color.getHex();
+                    // Only change if it's not already black (tires) or yellow (calipers)
+                    if (originalColor !== 0x000000 && originalColor !== 0xffdd00) {
+                      // Use color as a tint - this multiplies with textures
+                      // For non-black cars, tint the texture with the desired color
+                      if (carConfig.color !== 0x1a1a1a) {
+                        // Add emissive color to make the color more visible while keeping textures
+                        child.material.emissive = new THREE.Color(carConfig.color);
+                        child.material.emissiveIntensity = 0.4; // Subtle glow effect
+                        // Keep original color but brighten it
+                        child.material.color.setHex(carConfig.color);
+                      } else {
+                        child.material.color.setHex(carConfig.color);
+                      }
+                    }
+                  }
+                }
+                
+                // Enhance materials
+                child.material.envMapIntensity = 2.0;
+                child.material.roughness = Math.min(child.material.roughness, 0.3);
+                child.material.metalness = Math.max(child.material.metalness, 0.8);
+                child.material.needsUpdate = true;
+                
+                // Enable anisotropic filtering (keep textures sharp)
+                if (child.material.map) {
+                  child.material.map.anisotropy = renderer.capabilities.getMaxAnisotropy();
+                  child.material.map.needsUpdate = true;
+                }
+              }
+            }
+          });
+          
+          // Store car data
+          cars.push({
+            model: carClone,
+            wheels: carWheels,
+            trackProgress: carConfig.startPosition,
+            color: carConfig.name
+          });
+          
+          scene.add(carClone);
+          console.log(`${carConfig.name} F1 car loaded! Found ${carWheels.length} wheels`);
+        });
+        
+        console.log('All 3 F1 cars loaded successfully!');
       },
       (progress) => {
         const percentComplete = progress.total > 0 ? (progress.loaded / progress.total * 100).toFixed(2) : 0;
-        console.log('Loading Ferrari F1 model...', percentComplete + '%');
+        console.log('Loading F1 model...', percentComplete + '%');
       },
       (error) => {
         console.error('Error loading F1 car model:', error);
-        // Fallback: create a simple car if model fails to load
-        f1Car = createFallbackCar();
-        scene.add(f1Car);
       }
     );
 
@@ -1193,66 +1651,160 @@ const F1RaceSimulation = () => {
 
     // Track path parameters
     const speed = 1.5; // Speed around track
-    let trackProgress = 0; // Progress along track curve (0 to 1)
-
-    // Track wheel rotation
     let wheelRotation = 0;
 
     // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
       
-      // Only animate if the car model is loaded
-      if (f1Car && trackCurve) {
-        // Move car along COTA track curve
-        trackProgress += speed * 0.0005; // Adjust for smooth movement
-        if (trackProgress > 1) trackProgress = 0; // Loop back to start
-        
-        // Get position on curve
-        const carPosition = trackCurve.getPoint(trackProgress);
-        f1Car.position.copy(carPosition);
-        f1Car.position.y = 0.8; // Raise car above track
-        
-        // Calculate direction by looking ahead on the curve
-        const nextProgress = (trackProgress + 0.01) % 1;
-        const nextPosition = trackCurve.getPoint(nextProgress);
-        
-        // Calculate the angle between current and next position
-        const dx = nextPosition.x - carPosition.x;
-        const dz = nextPosition.z - carPosition.z;
-        
-        // Calculate rotation angle - car faces direction of movement
-        const directionAngle = Math.atan2(dx, dz) + Math.PI / 2;
-        
-        // Set car rotation to face the direction of movement
-        f1Car.rotation.y = directionAngle;
-        
-        // Rotate wheels based on speed
-        wheelRotation += speed * 0.03;
-        carWheels.forEach((wheel) => {
-          // Rotate wheels around their local X axis (forward/backward rolling)
-          wheel.rotation.x = wheelRotation;
+      // Animate all cars
+      if (cars.length > 0 && trackCurve) {
+        cars.forEach((car) => {
+          // Move car along COTA track curve
+          car.trackProgress += speed * 0.0005; // Same speed for all
+          if (car.trackProgress > 1) car.trackProgress = 0; // Loop back
+          
+          // Get position on curve
+          const carPosition = trackCurve.getPoint(car.trackProgress);
+          car.model.position.copy(carPosition);
+          car.model.position.y = 0.8; // Raise car above track
+          
+          // Calculate direction by looking ahead on the curve
+          const nextProgress = (car.trackProgress + 0.01) % 1;
+          const nextPosition = trackCurve.getPoint(nextProgress);
+          
+          // Calculate the angle between current and next position
+          const dx = nextPosition.x - carPosition.x;
+          const dz = nextPosition.z - carPosition.z;
+          
+          // Calculate rotation angle - car faces direction of movement
+          const directionAngle = Math.atan2(dx, dz) + Math.PI / 2;
+          
+          // Set car rotation to face the direction of movement
+          car.model.rotation.y = directionAngle;
+          
+          // Rotate wheels based on speed
+          car.wheels.forEach((wheel) => {
+            wheel.rotation.x = wheelRotation;
+          });
         });
         
-        // Move camera to follow car dynamically
-        const cameraOffset = 15; // Distance behind car
-        const cameraHeight = 8;   // Height above car
+        // Rotate wheels (shared rotation value)
+        wheelRotation += speed * 0.03;
         
-        // Calculate camera position behind the car
-        const cameraAngle = directionAngle - Math.PI / 2; // Behind the car
-        const camX = carPosition.x - Math.sin(cameraAngle) * cameraOffset;
-        const camZ = carPosition.z - Math.cos(cameraAngle) * cameraOffset;
+        // Camera follows the first car (black car)
+        if (cars[0]) {
+          const leadCar = cars[0];
+          const carPosition = trackCurve.getPoint(leadCar.trackProgress);
+          const nextProgress = (leadCar.trackProgress + 0.01) % 1;
+          const nextPosition = trackCurve.getPoint(nextProgress);
+          const dx = nextPosition.x - carPosition.x;
+          const dz = nextPosition.z - carPosition.z;
+          const directionAngle = Math.atan2(dx, dz) + Math.PI / 2;
+          
+          // Move camera to follow the lead car dynamically
+          const cameraOffset = 20; // Distance behind car (slightly further to see all 3)
+          const cameraHeight = 12;  // Height above car (higher to see all cars)
+          
+          // Calculate camera position behind the car
+          const cameraAngle = directionAngle - Math.PI / 2;
+          const camX = carPosition.x - Math.sin(cameraAngle) * cameraOffset;
+          const camZ = carPosition.z - Math.cos(cameraAngle) * cameraOffset;
+          
+          camera.position.x = camX;
+      camera.position.y = cameraHeight;
+          camera.position.z = camZ;
+          camera.lookAt(carPosition.x, 0.8, carPosition.z);
+        }
+      }
+      
+      // Animate rain if present
+      if (rainRef.current) {
+        const positions = rainRef.current.geometry.attributes.position.array;
+        const velocities = rainRef.current.geometry.userData.velocities;
         
-        camera.position.x = camX;
-        camera.position.y = cameraHeight;
-        camera.position.z = camZ;
-        camera.lookAt(carPosition.x, 0.8, carPosition.z);
+        for (let i = 0; i < positions.length; i += 3) {
+          positions[i + 1] -= velocities[i / 3]; // Move down
+          
+          // Reset rain drop when it hits the ground
+          if (positions[i + 1] < 0) {
+            positions[i + 1] = 100;
+          }
+        }
+        
+        rainRef.current.geometry.attributes.position.needsUpdate = true;
       }
       
       renderer.render(scene, camera);
     };
 
     animate();
+    
+    // Weather update function
+    const updateWeather = (rainy) => {
+      if (rainy) {
+        // Rainy weather
+        scene.background = new THREE.Color(0x5a6b7d); // Dark gray-blue sky
+        scene.fog = new THREE.Fog(0x5a6b7d, 50, 250); // Denser fog
+        
+        // Make clouds darker and more visible
+        cloudsRef.current?.forEach(cloud => {
+          cloud.children.forEach(puff => {
+            puff.material.color.setHex(0xcccccc);
+            puff.material.opacity = 0.9;
+          });
+        });
+        
+        // Add rain
+        if (!rainRef.current) {
+          rainRef.current = createRain();
+          scene.add(rainRef.current);
+        }
+        
+        // Darken lighting
+        scene.children.forEach(child => {
+          if (child.type === 'DirectionalLight') {
+            child.intensity = 0.5;
+          } else if (child.type === 'AmbientLight') {
+            child.intensity = 0.4;
+          }
+        });
+      } else {
+        // Clear weather
+        scene.background = new THREE.Color(0x87CEEB); // Sky blue
+        scene.fog = new THREE.Fog(0x87CEEB, 100, 400); // Light fog
+        
+        // Make clouds lighter
+        cloudsRef.current?.forEach(cloud => {
+          cloud.children.forEach(puff => {
+            puff.material.color.setHex(0xFFFFFF);
+            puff.material.opacity = 0.8;
+          });
+        });
+        
+        // Remove rain
+        if (rainRef.current) {
+          scene.remove(rainRef.current);
+          rainRef.current.geometry.dispose();
+          rainRef.current.material.dispose();
+          rainRef.current = null;
+        }
+        
+        // Restore lighting
+        scene.children.forEach(child => {
+          if (child.type === 'DirectionalLight') {
+            child.intensity = 1.0;
+          } else if (child.type === 'AmbientLight') {
+            child.intensity = 0.6;
+          }
+        });
+      }
+    };
+    
+    updateWeatherRef.current = updateWeather;
+    
+    // Initial weather setup
+    updateWeather(isRainy);
 
     // Handle window resize
     const handleResize = () => {
@@ -1270,7 +1822,198 @@ const F1RaceSimulation = () => {
     };
   }, []);
 
-  return <div ref={containerRef} style={{ width: '100%', height: '100vh' }} />;
+  // Update weather when isRainy changes
+  useEffect(() => {
+    if (updateWeatherRef.current) {
+      updateWeatherRef.current(isRainy);
+    }
+  }, [isRainy]);
+  
+  // Terminal command simulator
+  useEffect(() => {
+    const commands = [
+      { text: '> sys.render.init()', color: '#00ff00', delay: 80 },
+      { text: '√ Scene graph initialized [0.023s]', color: '#00ff00', delay: 50 },
+      { text: '> loading asset: ferrari_f1_sf16h.gltf', color: '#00aaff', delay: 120 },
+      { text: '  ├─ textures: 4/4 loaded', color: '#888888', delay: 90 },
+      { text: '  ├─ materials: 8/8 compiled', color: '#888888', delay: 70 },
+      { text: '  └─ meshes: 142 vertices processed', color: '#888888', delay: 60 },
+      { text: '√ CAR_01 [BLACK] rendered @ position(0.00, 0.80, track)', color: '#00ff00', delay: 100 },
+      { text: '√ CAR_02 [RED] rendered @ position(0.04, 0.80, track)', color: '#00ff00', delay: 100 },
+      { text: '√ CAR_03 [BLUE] rendered @ position(0.08, 0.80, track)', color: '#00ff00', delay: 100 },
+      { text: '> track.generate() :: COTA_CIRCUIT', color: '#ffaa00', delay: 150 },
+      { text: '  ├─ points: 89 control vertices', color: '#888888', delay: 60 },
+      { text: '  ├─ curve: CatmullRom interpolation', color: '#888888', delay: 60 },
+      { text: '  ├─ surface: 5.513km asphalt', color: '#888888', delay: 70 },
+      { text: '  └─ curbs: red/white striped [800 segments]', color: '#888888', delay: 80 },
+      { text: '√ Track geometry built successfully', color: '#00ff00', delay: 90 },
+      { text: '> banner.create() :: COTA_BRANDING', color: '#ffaa00', delay: 100 },
+      { text: '  ├─ loading: f1_movie_logo.png [512x512]', color: '#888888', delay: 80 },
+      { text: '  ├─ structure: poles + frame + lights', color: '#888888', delay: 70 },
+      { text: '  └─ text: double-sided rendering', color: '#888888', delay: 70 },
+      { text: '√ Banner mounted @ (-30, 0, -15)', color: '#00ff00', delay: 90 },
+      { text: '> weather.system.initialize()', color: '#00aaff', delay: 110 },
+      { text: '  ├─ clouds: 20 instances generated', color: '#888888', delay: 60 },
+      { text: '  ├─ fog: atmospheric enabled', color: '#888888', delay: 60 },
+      { text: '  └─ rain: 15000 particles ready', color: '#888888', delay: 70 },
+      { text: '> camera.attach() :: CHASE_MODE', color: '#ffaa00', delay: 100 },
+      { text: '  └─ target: CAR_01 [offset: 20m, height: 12m]', color: '#888888', delay: 80 },
+      { text: '> lighting.setup() :: DIRECTIONAL + AMBIENT', color: '#00aaff', delay: 90 },
+      { text: '√ Scene ready [total: 2.847s]', color: '#00ff00', delay: 120 },
+      { text: '> animation.loop.start()', color: '#00ff00', delay: 100 },
+      { text: '  ├─ FPS: 60 | Frame: 1024', color: '#888888', delay: 60 },
+      { text: '  ├─ CAR_SPEED: 2.5x', color: '#888888', delay: 50 },
+      { text: '  └─ WHEEL_ROTATION: active', color: '#888888', delay: 50 },
+      { text: '> shader.compile() :: PBR_MATERIALS', color: '#ffaa00', delay: 90 },
+      { text: '√ All systems operational', color: '#00ff00', delay: 150 },
+      { text: '> monitoring.performance...', color: '#888888', delay: 100 },
+      { text: '  ├─ draw_calls: 127', color: '#666666', delay: 40 },
+      { text: '  ├─ triangles: 18,542', color: '#666666', delay: 40 },
+      { text: '  └─ memory: 124MB', color: '#666666', delay: 60 },
+      { text: '> sys.status: [RUNNING]', color: '#00ff00', delay: 200 },
+      { text: '', color: '#00ff00', delay: 300 }
+    ];
+    
+    let currentIndex = 0;
+    let currentLines = [];
+    const maxLines = 12; // Show only last 12 lines
+    
+    const addLine = () => {
+      const command = commands[currentIndex];
+      currentLines.push(command);
+      
+      if (currentLines.length > maxLines) {
+        currentLines.shift(); // Remove oldest line
+      }
+      
+      setTerminalLines([...currentLines]);
+      
+      currentIndex = (currentIndex + 1) % commands.length;
+      
+      setTimeout(addLine, command.delay);
+    };
+    
+    const timer = setTimeout(addLine, 500);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
+      <div ref={containerRef} style={{ width: '100%', height: '100%' }} />
+      
+      {/* Weather Toggle Button */}
+      <button
+        onClick={() => setIsRainy(!isRainy)}
+        style={{
+          position: 'absolute',
+          top: '20px',
+          right: '20px',
+          padding: '12px 24px',
+          fontSize: '16px',
+          fontWeight: 'bold',
+          backgroundColor: isRainy ? '#5a6b7d' : '#87CEEB',
+          color: 'white',
+          border: '2px solid white',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
+          transition: 'all 0.3s ease',
+          zIndex: 1000
+        }}
+        onMouseEnter={(e) => {
+          e.target.style.transform = 'scale(1.05)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.transform = 'scale(1)';
+        }}
+      >
+        {isRainy ? '🌧️ Rainy' : '☀️ Clear'}
+      </button>
+      
+      {/* Hackery Terminal Display */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '20px',
+          left: '20px',
+          width: '450px',
+          maxHeight: '300px',
+          backgroundColor: 'rgba(0, 0, 0, 0.85)',
+          border: '2px solid #00ff00',
+          borderRadius: '4px',
+          padding: '12px',
+          fontFamily: 'Monaco, Consolas, "Courier New", monospace',
+          fontSize: '12px',
+          lineHeight: '1.4',
+          color: '#00ff00',
+          boxShadow: '0 0 20px rgba(0, 255, 0, 0.3), inset 0 0 10px rgba(0, 255, 0, 0.1)',
+          overflow: 'hidden',
+          zIndex: 999,
+          backdropFilter: 'blur(5px)'
+        }}
+      >
+        {/* Terminal Header */}
+        <div style={{ 
+          borderBottom: '1px solid #00ff00', 
+          marginBottom: '8px', 
+          paddingBottom: '6px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }}>
+          <span style={{ color: '#00ff00', fontWeight: 'bold' }}>F1_RENDER_ENGINE v2.3.7</span>
+          <div style={{ display: 'flex', gap: '6px' }}>
+            <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#ff0000' }}></div>
+            <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#ffaa00' }}></div>
+            <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#00ff00' }}></div>
+          </div>
+        </div>
+        
+        {/* Terminal Lines */}
+        <div style={{ 
+          display: 'flex', 
+          flexDirection: 'column',
+          gap: '2px'
+        }}>
+          {terminalLines.map((line, index) => (
+            <div 
+              key={index} 
+              style={{ 
+                color: line.color,
+                whiteSpace: 'pre',
+                textShadow: line.color === '#00ff00' ? '0 0 5px rgba(0, 255, 0, 0.5)' : 'none',
+                animation: index === terminalLines.length - 1 ? 'fadeIn 0.2s ease-in' : 'none'
+              }}
+            >
+              {line.text}
+            </div>
+          ))}
+          {/* Blinking cursor */}
+          <div style={{ 
+            display: 'inline-block',
+            width: '8px',
+            height: '14px',
+            backgroundColor: '#00ff00',
+            animation: 'blink 1s infinite',
+            marginLeft: '2px'
+          }}></div>
+        </div>
+      </div>
+      
+      {/* Add CSS animations */}
+      <style>{`
+        @keyframes blink {
+          0%, 49% { opacity: 1; }
+          50%, 100% { opacity: 0; }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+      `}</style>
+    </div>
+  );
 };
 
 export default F1RaceSimulation;
